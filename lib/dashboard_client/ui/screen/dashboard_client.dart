@@ -14,7 +14,7 @@ class _DashboardClientState extends State<DashboardClient> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Dashboard Admin'),
+          title: Text('Dashboard Admin1'),
         ),
         body: Container(
           padding: EdgeInsets.only(left: 10, right: 10),
