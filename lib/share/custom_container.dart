@@ -12,7 +12,10 @@ class CustomContainer extends StatelessWidget {
     return Expanded(
         child: Container(
           padding: EdgeInsets.only(top: 20, bottom: 20),
-          color: color,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            color: color,
+          ),
           child: Column(
             children: [
               icon,
@@ -22,7 +25,9 @@ class CustomContainer extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              Text('$text2'),
+              Text('$text2',
+                  style: TextStyle(fontSize: 14, color: Colors.white),
+              ),
             ],
           ),
         )
