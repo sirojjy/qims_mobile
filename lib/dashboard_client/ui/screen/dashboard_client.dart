@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:qims_mobile/share/custom_button.dart';
 import 'package:qims_mobile/share/custom_container.dart';
 
 class DashboardClient extends StatefulWidget {
@@ -19,9 +18,12 @@ class _DashboardClientState extends State<DashboardClient> {
         ),
         body: Container(
           padding: EdgeInsets.only(left: 10, right: 10),
-          child: Column(
+          child:
+          Column(
             children: [
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   CustomContainer(
@@ -30,7 +32,9 @@ class _DashboardClientState extends State<DashboardClient> {
                     text1: '1',
                     text2: 'Sertifikat Aktif',
                   ),
-                  SizedBox(width: 10,),
+                  SizedBox(
+                    width: 10,
+                  ),
                   CustomContainer(
                     color: Colors.blue,
                     icon: Icon(Icons.pageview),
@@ -39,7 +43,9 @@ class _DashboardClientState extends State<DashboardClient> {
                   ),
                 ],
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   CustomContainer(
@@ -48,7 +54,9 @@ class _DashboardClientState extends State<DashboardClient> {
                     text1: '1',
                     text2: 'Sertifikat Aktif',
                   ),
-                  SizedBox(width: 10,),
+                  SizedBox(
+                    width: 10,
+                  ),
                   CustomContainer(
                     color: Colors.blue,
                     icon: Icon(Icons.pageview),
@@ -57,107 +65,153 @@ class _DashboardClientState extends State<DashboardClient> {
                   ),
                 ],
               ),
-              SizedBox(height: 10,),
-              Row(
-                children: [
-                  Expanded(
-                    child:
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.blue[100],
-                          borderRadius: BorderRadius.circular(5)
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                decoration: BoxDecoration(
+                    color: Colors.blue[100],
+                    borderRadius: BorderRadius.circular(5)),
+                child:
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(child:
+                          Text('Sertifikat',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            )
+                          ),
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            ClipRRect(
-                              child: Image.asset(
+                    ]),
+                    Row(
+                      children: [
+                        Column(children: [
+                          SizedBox(height: 10,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              ClipRRect(
+                                child: Image.asset(
                                   'assets/images/9001.png',
-                                height: 60,
+                                  height: 60,
+                                ),
+                                borderRadius: BorderRadius.circular(5),
                               ),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                    'abcx',
-                                    style: TextStyle(
-                                      color: Colors.black87,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                    )
-                                ),
-                                SizedBox(height: 5,),
-                                SizedBox(
-                                  width: 120,
-                                    child: Text(
-                                      "Sertifikat ISO"
+                              SizedBox(width: 20,),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('PPS Cilacap',
+                                      style: TextStyle(
+                                        color: Colors.black87,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                  SizedBox(height: 5,),
+                                  SizedBox(
+                                      width: 120,
+                                      child: Text("ISO 9001:2015"),
                                     ),
-                                ),
-                                SizedBox(height: 5,),
-                                InkWell(
-                                  child: Container(
-                                    width: 150,
-                                    height: 35,
-                                    padding: EdgeInsets.all(5),
-                                    decoration: BoxDecoration(
-                                      color: Colors.blue,
-                                      borderRadius: BorderRadius.circular(5)
+                                  SizedBox(
+                                      height: 5,
                                     ),
-                                    child: Center(
-                                      child: Text('Lihat Sertifikat',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 14,
+                                    InkWell(
+                                      child: Container(
+                                        width: 150,
+                                        height: 35,
+                                        padding: EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                            color: Colors.blue,
+                                            borderRadius: BorderRadius.circular(5)),
+                                        child: Center(
+                                          child: Text(
+                                            'Lihat Sertifikat',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 14,
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
+                                    )
+                                  ],
                                 )
-
                               ],
+                            ),
+                          ]
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+
+              SizedBox(
+                height: 10,
+              ),
+
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                decoration: BoxDecoration(
+                    color: Colors.blue[100],
+                    borderRadius: BorderRadius.circular(5)),
+                child:
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(child:
+                            Text('Profil',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
                             )
+                            ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 10,),
+
+                    Row(
+                      children: [
+                        Column(
+                          children: [
+                            Text('Column 1'),
+                            Text('Column 1'),
+                            Text('Column 1'),
+                            Text('Column 1'),
                           ],
                         ),
-                      )
-                    // Container(
-                    //   padding: EdgeInsets.only(top: 20, bottom: 20),
-                    //   color: Colors.grey[300],
-                    //   child: Column(
-                    //     children: [
-                    //       Row(
-                    //         children: [
-                    //           Text('Certificate Registration'),
-                    //         ],
-                    //       ),
-                    //       SizedBox(height: 10,),
-                    //
-                    //       // Row(
-                    //       //   children: [
-                    //       //     Icon(Icons.picture_in_picture),
-                    //       //     // Container(child:
-                    //       //     //   Column(
-                    //       //     //     children: [
-                    //       //     //       Text('ISO 9001:2015',),
-                    //       //     //       Text('No Sertifikat : QAIC/ID/11066-A'),
-                    //       //     //       Text('Scope : Provision of Management and Administration of Fish Diseases, Quality and Safety of Fishery Product',),
-                    //       //     //       CustomButton(
-                    //       //     //         text: 'Lihat Sertifikat', onKlick: (){})
-                    //       //     //     ],
-                    //       //     //   )
-                    //       //     // ),
-                    //       //   ],
-                    //       // )
-                    //     ],
-                    //   )
-                    //
-                    // ),
-                  )
-                ],
-              )
+                        Column(
+                          children: [
+                            Text('Column 2'),
+                            Text('Column 2'),
+                            Text('Column 2'),
+                            Text('Column 2'),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text('Column 3'),
+                            Text('Column 3'),
+                            Text('Column 3'),
+                            Text('Column 3'),
+                          ],
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),
