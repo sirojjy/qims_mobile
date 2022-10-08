@@ -4,6 +4,8 @@ import 'package:qims_mobile/aut_modul/ui/screen/register.dart';
 import 'package:qims_mobile/dashboard_client/ui/screen/dashboard_client.dart';
 import 'package:qims_mobile/share/custom_routes.dart';
 
+import 'menu/bottom_menu.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -27,6 +29,7 @@ class MyApp extends StatelessWidget {
         CustomRoutes.registerPage : (context) => const Register(),
         CustomRoutes.loginPage : (context) => const Login(),
         CustomRoutes.dashboardClient : (context) => const DashboardClient(),
+        CustomRoutes.menu : (context) => const BottomMenu(),
       },
     );
   }
