@@ -49,7 +49,7 @@ class _LoginState extends State<Login> {
               CustomButton(
                 text: 'Submit',
                 onKlick: () {
-                  Navigator.pushNamedAndRemoveUntil(context, CustomRoutes.dashboardClient, (Route<dynamic> route) => false);
+                  Navigator.pushNamedAndRemoveUntil(context, CustomRoutes.menu, (Route<dynamic> route) => false);
                 }
               ),
               Expanded(child: SizedBox()),
