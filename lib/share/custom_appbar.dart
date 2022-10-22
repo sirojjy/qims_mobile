@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:qims_mobile/dashboard_client/ui/screen/profil_client.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final String? judul;
 
   const CustomAppBar({super.key, this.judul});
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,13 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
           actions: [
             Container(
               width: 50,
-              child: Icon(Icons.person),
+              child: IconButton(
+                icon: Icon(Icons.person),
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilClient()));
+                },
+              ),
+
             )
           ],
         ),

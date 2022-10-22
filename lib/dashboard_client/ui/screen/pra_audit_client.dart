@@ -29,31 +29,7 @@ class _PraAuditClientState extends State<PraAuditClient> {
                     titles: 'Jadwal Audit',
                     descriptions: '',
                   ),
-                  CustomCollapse(
-                    icons: Icons.date_range_rounded,
-                    titles: 'Form Registrasi',
-                    descriptions: '',
-                  ),
-                  CustomCollapse(
-                    icons: Icons.date_range_rounded,
-                    titles: 'Jadwal Audit',
-                    descriptions: '',
-                  ),
-                  CustomCollapse(
-                    icons: Icons.date_range_rounded,
-                    titles: 'Jadwal Audit',
-                    descriptions: '',
-                  ),
-                  CustomCollapse(
-                    icons: Icons.date_range_rounded,
-                    titles: 'Jadwal Audit',
-                    descriptions: '',
-                  ),
-                  CustomCollapse(
-                    icons: Icons.date_range_rounded,
-                    titles: 'Jadwal Audit',
-                    descriptions: '',
-                  ),
+
                 ],
               ),
             ),

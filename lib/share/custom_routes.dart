@@ -9,4 +9,5 @@ class CustomRoutes {
   static String auditClient = 'auditClient';
   static String postAuditClient = 'postAuditClient';
   static String dokumenClient = 'dokumenClient';
+  static String profilClient = 'profilClient';
 }

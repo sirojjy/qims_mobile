@@ -86,7 +86,7 @@ class LoginScreen extends StatelessWidget {
                   child: Ink(
                     decoration: BoxDecoration(
                         gradient:
-                        const LinearGradient(colors: [Colors.red, Colors.yellow]),
+                        const LinearGradient(colors: [Colors.lightBlue, Colors.blue]),
                         borderRadius: BorderRadius.circular(20)),
                     child: Container(
                       width: 150,

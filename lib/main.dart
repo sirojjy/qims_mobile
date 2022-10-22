@@ -6,6 +6,7 @@ import 'package:qims_mobile/dashboard_client/ui/screen/dashboard_client.dart';
 import 'package:qims_mobile/dashboard_client/ui/screen/dokumen_klien.dart';
 import 'package:qims_mobile/dashboard_client/ui/screen/post_audit.dart';
 import 'package:qims_mobile/dashboard_client/ui/screen/pra_audit_client.dart';
+import 'package:qims_mobile/dashboard_client/ui/screen/profil_client.dart';
 import 'package:qims_mobile/share/custom_routes.dart';
 
 import 'menu/bottom_menu.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         CustomRoutes.auditClient : (context) => const AuditClient(),
         CustomRoutes.postAuditClient : (context) => const PostAuditClient(),
         CustomRoutes.dokumenClient : (context) => const DokumenClient(),
+        CustomRoutes.profilClient : (context) => const ProfilClient(),
       },
     );
   }

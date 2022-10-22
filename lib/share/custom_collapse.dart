@@ -7,7 +7,7 @@ class CustomCollapse extends StatelessWidget {
   final String? descriptions;
   final IconData icons;
   final jenisAudit = ['Sertifikasi', 'Surveillance', 'Surveillance', 'Re-sertifikasi'];
-  final iconTiles = [Icons.directions_bike, Icons.directions_boat, Icons.directions_bus, Icons.directions_car,];
+  final iconTiles = [Icons.file_open, Icons.directions_boat, Icons.directions_bus, Icons.directions_car,];
 
   CustomCollapse({Key? key, required this.titles, this.descriptions, required this.icons}) : super(key: key);
 
