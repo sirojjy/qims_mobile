@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
@@ -7,8 +6,9 @@ class CustomContainer extends StatelessWidget {
   final IconData? icon;
   final String? text1;
   final String? text2;
-  final Color? color;
-  const CustomContainer({Key? key, this.text1, this.text2, this.color, required, this.icon }) : super(key: key);
+  final Color? color1;
+  final Color? color2;
+  const CustomContainer({Key? key, this.text1, this.text2,  required, this.icon, this.color1, this.color2 }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,9 @@ class CustomContainer extends StatelessWidget {
           // padding: EdgeInsets.only(top: 20, bottom: 20),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
-            color: color,
+
+            // color: color1,
+            // color: color2,
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
@@ -33,7 +35,13 @@ class CustomContainer extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(5),topRight: Radius.circular(5)),
-                    color: Colors.green,
+                    gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment(0.8, 1),
+                        colors: <Color>[
+                          color1!, color2!,
+                        ]
+                    ),
                   ),
                   width: double.infinity,
                   height: 70,
