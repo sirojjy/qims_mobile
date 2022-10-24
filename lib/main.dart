@@ -8,11 +8,20 @@ import 'package:qims_mobile/dashboard_client/ui/screen/post_audit.dart';
 import 'package:qims_mobile/dashboard_client/ui/screen/pra_audit_client.dart';
 import 'package:qims_mobile/dashboard_client/ui/screen/profil_client.dart';
 import 'package:qims_mobile/share/custom_routes.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'aut_modul/ui/bloc/auth_bloc.dart';
 import 'menu/bottom_menu.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+      MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (BuildContext context) => AuthBloc())
+        ],
+        child: const MyApp(),
+      )
+  );
 }
 
 class MyApp extends StatelessWidget {

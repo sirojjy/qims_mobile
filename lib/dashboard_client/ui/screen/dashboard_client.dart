@@ -1,5 +1,6 @@
 import 'package:enhance_stepper/enhance_stepper.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:qims_mobile/dashboard_client/model/stepper_model.dart';
 import 'package:qims_mobile/share/custom_appbar.dart';
@@ -26,6 +27,7 @@ class _DashboardClientState extends State<DashboardClient> {
   ];
 
   int _index = 0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -240,7 +242,7 @@ class _DashboardClientState extends State<DashboardClient> {
                   ),
                   Container(
                     // alignment: Alignment.centerLeft,
-                    //   height: 900,
+                    //   height: 200,
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -264,6 +266,8 @@ class _DashboardClientState extends State<DashboardClient> {
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               )),
+
+
 
                           // ElevatedButton(
                           //   onPressed: () => MapsLauncher.launchQuery(

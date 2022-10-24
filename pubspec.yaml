@@ -40,6 +40,14 @@ dependencies:
   circular_bottom_navigation: ^2.2.0
   maps_launcher: ^2.0.1
   rounded_expansion_tile: ^0.0.13
+  http: ^0.13.4
+  email_validator: ^2.0.1
+  shared_preferences: ^2.0.11
+  google_maps_flutter: ^2.2.1
+  flutter_bloc: ^8.1.1
+  equatable: ^2.0.5
+
+
 
 dev_dependencies:
   flutter_test:
