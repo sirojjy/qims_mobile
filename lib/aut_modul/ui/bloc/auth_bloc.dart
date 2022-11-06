@@ -14,11 +14,8 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthState()) {
-    // on<OnLoginEvent>(_validateToLogin);
+    on<OnLoginEvent>(_validateToLogin);
     on<OnRegisterEvent>(_validateToRegister);
-    on<OnRegisterEvent>((event, emit) {
-      print('hello2');
-    });
   }
 
   
@@ -90,7 +87,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
 
   _validateToRegister(OnRegisterEvent event, Emitter<AuthState> emit) async {
-    print('hello2');
     emit(
         state.copyWith(
             status: AuthStateStatus.loading
@@ -128,6 +124,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             )
         );
       } else{
+        print('INI HASILNYA');
         var url = Uri.parse(ApiConstant.authentication);
         var request = await http.post(
             url,
@@ -138,7 +135,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               'nama' : event.nama,
             }
         );
-        var response = jsonDecode(request.body);
+        var response;
+        // = jsonDecode(request.body);
+        // print('INI HASILNYA : $response');
         if(response['status'] == 'fail'){
           emit(
               state.copyWith(

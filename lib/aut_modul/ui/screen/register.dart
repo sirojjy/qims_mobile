@@ -130,18 +130,12 @@ class _RegisterState extends State<Register> {
                         child: ElevatedButton(
                           onPressed: () {
                             print('hello');
-                            BlocProvider.of<AuthBloc>(context).add(OnRegisterEvent(
+                            context.read<AuthBloc>().add(OnRegisterEvent(
                               param: 'register',
                               nama: namaController.text,
                               username: userNameControler.text,
                               password: passwordController.text,
                             ));
-                            // context.read<AuthBloc>().add(OnRegisterEvent(
-                            //   param: 'register',
-                            //   nama: namaController.text,
-                            //   username: userNameControler.text,
-                            //   password: passwordController.text,
-                            // ));
                           },
                           style: ElevatedButton.styleFrom(
                               padding: EdgeInsets.zero,
