@@ -109,7 +109,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(height: size.height * 0.03,),
 
                       Container(
-
                         alignment: Alignment.centerRight,
                         margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                         child: ElevatedButton(

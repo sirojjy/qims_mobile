@@ -17,12 +17,14 @@ class AuthState extends Equatable {
   const AuthState({
     this.username,
     this.password,
+    this.nama,
     this.status = AuthStateStatus.initial,
     this.message
 });
 
   final String? username;
   final String? password;
+  final String? nama;
   final AuthStateStatus status;
   final String? message;
 
@@ -31,6 +33,7 @@ class AuthState extends Equatable {
   List<Object?> get props => [
     username,
     password,
+    nama,
     status,
     message,
   ];
@@ -38,12 +41,14 @@ class AuthState extends Equatable {
   AuthState copyWith ({
     String? username,
     String? password,
+    String? nama,
     AuthStateStatus? status,
     String? message
   }) {
     return AuthState(
       username: username ?? this.username,
       password: password ?? this.password,
+      nama: nama ?? this.nama,
       status: status ?? this.status,
       message: message ?? this.message,
     );
