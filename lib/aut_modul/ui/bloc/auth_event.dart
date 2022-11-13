@@ -9,10 +9,10 @@ class AuthEvent extends Equatable{
 class OnLoginEvent extends AuthEvent {
   final String? param;
   final String? username;
-  final String? nama;
   final String? password;
 
-  OnLoginEvent( {this.param, this.username, this.password, this.nama});
+
+  OnLoginEvent({this.param, this.username, this.password});
 
   @override
   List<Object?> get props => [param, username, password];
@@ -21,11 +21,14 @@ class OnLoginEvent extends AuthEvent {
 class OnRegisterEvent extends AuthEvent {
   final String? param;
   final String? username;
-  final String? nama;
   final String? password;
+  final String? nama_klien;
+  final String? alamat;
+  final String? nama_cp;
+  final String? email;
 
-  OnRegisterEvent( {this.param, this.username, this.password, this.nama});
+  OnRegisterEvent({this.param, this.username, this.password, this.nama_klien, this.alamat, this.nama_cp, this.email,});
 
   @override
-  List<Object?> get props => [param, username, password, nama];
+  List<Object?> get props => [param, username, password];
 }

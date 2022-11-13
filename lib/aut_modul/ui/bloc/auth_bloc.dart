@@ -5,6 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:qims_mobile/share/api_constant.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -13,6 +14,7 @@ part 'auth_state.dart';
 
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
+
   AuthBloc() : super(AuthState()) {
     on<OnLoginEvent>(_validateToLogin);
     on<OnRegisterEvent>(_validateToRegister);
@@ -21,6 +23,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   
 
   FutureOr<void> _validateToLogin(OnLoginEvent event, Emitter<AuthState> emit) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+
     emit(
       state.copyWith(
         status: AuthStateStatus.loading
@@ -71,8 +76,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           emit(
               state.copyWith(
                 status: AuthStateStatus.success,
+
               )
           );
+          prefs.setString('id', response['id']);
+          prefs.setString('username', response['username']);
+          prefs.setString('nama', response['nama']);
+          prefs.setString('id_klien', response['id_klien']);
         }
       }
     } catch(error, stacktrace){
@@ -95,7 +105,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
 
     try{
-      if(event.username == '' && event.password == '' && event.nama == ''){
+      if(event.username == '' && event.password == '' && event.nama_cp == ''){
         emit(
             state.copyWith(
               status: AuthStateStatus.error,
@@ -116,7 +126,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               message: 'Password tidak boleh kosong',
             )
         );
-      } else if(event.nama == ''){
+      } else if(event.nama_cp == ''){
         emit(
             state.copyWith(
               status: AuthStateStatus.error,
@@ -130,14 +140,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             url,
             body: {
               'param' : event.param,
+              'nama_klien' : event.nama_klien,
+              'alamat' : event.alamat,
               'username' : event.username,
               'password' : event.password,
-              'nama' : event.nama,
+              'nama_cp' : event.nama_cp,
+              'nama_klien' : event.nama_klien,
+              'alamat' : event.alamat,
+               'email' : event.email,
             }
         );
-        var response;
-        // = jsonDecode(request.body);
-        // print('INI HASILNYA : $response');
+        var response = jsonDecode(request.body);
+        print('INI HASILNYA : $response');
         if(response['status'] == 'fail'){
           emit(
               state.copyWith(
@@ -148,7 +162,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         } else {
           emit(
               state.copyWith(
-                status: AuthStateStatus.success,
+                status: AuthStateStatus.successRegister,
               )
           );
         }
