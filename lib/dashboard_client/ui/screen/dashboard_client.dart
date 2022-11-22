@@ -5,6 +5,7 @@ import 'package:maps_launcher/maps_launcher.dart';
 import 'package:qims_mobile/dashboard_client/model/stepper_model.dart';
 import 'package:qims_mobile/share/custom_appbar.dart';
 import 'package:qims_mobile/share/custom_container.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DashboardClient extends StatefulWidget {
   const DashboardClient({Key? key}) : super(key: key);
@@ -15,6 +16,10 @@ class DashboardClient extends StatefulWidget {
 
 class _DashboardClientState extends State<DashboardClient> {
   int groupValue = 0;
+  
+  SharedPreferences? pref;
+  var namaKlien;
+  
 
   StepperType _type = StepperType.vertical;
 
@@ -27,7 +32,21 @@ class _DashboardClientState extends State<DashboardClient> {
   ];
 
   int _index = 0;
+  
+  @override
+  void initState() {
+    // TODO: implement initState
+    getPref();
+    super.initState();
+  }
 
+  void getPref() async {
+    pref = await SharedPreferences.getInstance();
+
+    setState(() {
+      namaKlien = pref!.getString('nama');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -153,7 +172,7 @@ class _DashboardClientState extends State<DashboardClient> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('PPS Cilacap'),
+                                  Text('$namaKlien'),
                                   Text(
                                       'Jl. Penyu No. 12, Cilacap, Jawa Tengah'),
                                   Text('Bu Eko'),
@@ -296,5 +315,6 @@ class _DashboardClientState extends State<DashboardClient> {
           )),
     );
   }
+
 }
 

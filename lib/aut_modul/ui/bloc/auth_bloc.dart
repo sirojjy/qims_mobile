@@ -76,13 +76,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           emit(
               state.copyWith(
                 status: AuthStateStatus.success,
-
               )
           );
-          prefs.setString('id', response['id']);
-          prefs.setString('username', response['username']);
-          prefs.setString('nama', response['nama']);
-          prefs.setString('id_klien', response['id_klien']);
+          print('JANCUK : $response');
+          await prefs.setString('id', response['id']);
+          await prefs.setString('username', response['username']);
+          await prefs.setString('nama', response['nama']);
+          await prefs.setString('id_klien', response['id_klien']);
+
+          print('JANCUK : ${prefs.getString('nama')}');
         }
       }
     } catch(error, stacktrace){
