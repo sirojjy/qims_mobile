@@ -84,7 +84,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           await prefs.setString('nama', response['nama']);
           await prefs.setString('id_klien', response['id_klien']);
 
-          print('JANCUK : ${prefs.getString('nama')}');
+          print('TEST 2 : ${prefs.getString('nama')}');
         }
       }
     } catch(error, stacktrace){
