@@ -78,7 +78,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                 status: AuthStateStatus.success,
               )
           );
-          print('JANCUK : $response');
+          print('TEST : $response');
           await prefs.setString('id', response['id']);
           await prefs.setString('username', response['username']);
           await prefs.setString('nama', response['nama']);
