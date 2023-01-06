@@ -78,13 +78,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                 status: AuthStateStatus.success,
               )
           );
-          print('TEST : $response');
+          // print('TEST : $response');
           await prefs.setString('id', response['id']);
           await prefs.setString('username', response['username']);
           await prefs.setString('nama', response['nama']);
           await prefs.setString('id_klien', response['id_klien']);
 
-          print('TEST 2 : ${prefs.getString('nama')}');
+          // print('TEST 2 : ${prefs.getString('nama')}');
         }
       }
     } catch(error, stacktrace){
@@ -95,8 +95,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       );
     }
   }
-
-
 
   _validateToRegister(OnRegisterEvent event, Emitter<AuthState> emit) async {
     emit(

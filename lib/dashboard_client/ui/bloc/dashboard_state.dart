@@ -11,11 +11,14 @@ extension DashboardInitial on DashboardStateStatus {
 }
 
 class DashboardState extends Equatable{
+
   const DashboardState({
     this.status = DashboardStateStatus.initial,
     this.id_klien,
     this.id_users,
     this.message,
+    //profil
+    this.alamat,
     //rencana audit
     this.rencana_audit,
     this.nama_iso,
@@ -23,22 +26,28 @@ class DashboardState extends Equatable{
     this.detail_file,
     this.nama_klien,
 
+
 });
 
   final DashboardStateStatus? status;
   final String? id_klien;
   final String? id_users;
   final String? message;
+  //profil
+  final String? alamat;
+
   final String? rencana_audit;
   final String? nama_iso;
   final String? dok_file;
   final String? detail_file;
   final String? nama_klien;
 
+
   @override
   // TODO: implement props
   List<Object?> get props => [
     status, id_klien, id_users,message,
+    alamat,
     rencana_audit, nama_iso, nama_klien, dok_file, detail_file,
   ];
 
@@ -47,6 +56,8 @@ class DashboardState extends Equatable{
     String? id_klien,
     String? id_users,
     String? message,
+    //profil
+    String? alamat,
     String? rencana_audit,
     String? nama_iso,
     String? nama_klien,
@@ -59,6 +70,8 @@ class DashboardState extends Equatable{
       id_klien: id_klien ?? this.id_klien,
       id_users: id_users ?? this.id_users,
       message: message ?? this.message,
+      //profil
+      alamat: alamat ?? this.alamat,
       rencana_audit: rencana_audit ?? this.rencana_audit,
       nama_iso: nama_iso ?? this.nama_iso,
       nama_klien: nama_klien ?? this.nama_klien,

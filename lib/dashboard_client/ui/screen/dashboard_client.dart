@@ -1,6 +1,5 @@
 import 'package:enhance_stepper/enhance_stepper.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:qims_mobile/dashboard_client/model/stepper_model.dart';
 import 'package:qims_mobile/share/custom_appbar.dart';
@@ -19,6 +18,7 @@ class _DashboardClientState extends State<DashboardClient> {
   
   SharedPreferences? pref;
   var namaKlien;
+  var alamat;
   
 
   StepperType _type = StepperType.vertical;
@@ -45,6 +45,7 @@ class _DashboardClientState extends State<DashboardClient> {
 
     setState(() {
       namaKlien = pref!.getString('nama');
+      alamat = pref!.getString('alamat');
     });
   }
 
@@ -52,21 +53,21 @@ class _DashboardClientState extends State<DashboardClient> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: CustomAppBar(judul: 'Dashboard'),
+          appBar: const CustomAppBar(judul: 'Dashboard'),
           body: SingleChildScrollView(
             child: Container(
-              padding: EdgeInsets.only(left: 10, right: 10),
+              padding: const EdgeInsets.only(left: 10, right: 10),
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(
-                    children: [
+                    children: const [
                       CustomContainer(
                         color1: Color(0xff1AF0AC),
                         color2: Color(0xff11B9AF),
-                        icon: Icons.pageview,
+                        icon: Icons.check_box,
                         text1: '1',
                         text2: 'Sertifikat Aktif',
                       ),
@@ -76,21 +77,21 @@ class _DashboardClientState extends State<DashboardClient> {
                       CustomContainer(
                         color1: Color(0xff52E5E7),
                         color2: Color(0xff108CFF),
-                        icon: Icons.pageview,
+                        icon: Icons.calendar_month,
                         text1: '1',
                         text2: 'Kegiatan Dijadwalkan',
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(
-                    children: [
+                    children: const [
                       CustomContainer(
                         color1: Color(0xffFCCF31),
                         color2: Color(0xffF55555),
-                        icon: Icons.pageview,
+                        icon: Icons.schedule_sharp,
                         text1: '0',
                         text2: 'Jadwal Akan Datang',
                       ),
@@ -100,23 +101,23 @@ class _DashboardClientState extends State<DashboardClient> {
                       CustomContainer(
                         color1: Color(0xffF761A1),
                         color2: Color(0xff8C1BAB),
-                        icon: Icons.pageview,
+                        icon: Icons.done_all,
                         text1: '0',
                         text2: 'Kegiatan Selesai',
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
 
 
 
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(5),
@@ -124,74 +125,121 @@ class _DashboardClientState extends State<DashboardClient> {
                           color: Colors.grey.withOpacity(0.5),
                           spreadRadius: 5,
                           blurRadius: 7,
-                          offset: Offset(0, 3),
+                          offset: const Offset(0, 3),
                         ),
                 ],
                     ),
-                    child: Column(
-                      children: [
-                        Row(
+                    child: Table(
+                      // border: TableBorder.all(),
+                      columnWidths: <int, TableColumnWidth>{
+                        0 : IntrinsicColumnWidth(),
+                        1 : FlexColumnWidth(),
+                      },
+                      children: <TableRow>[
+                        TableRow(
                           children: [
-                            Expanded(
-                              child: Text('Profil',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.black87,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                            Container(
+                              height: 30,
+                              child: Text('Nama '),
                             ),
-                          ],
+                            Container(
+                              height: 30,
+                              child: Text(': $namaKlien'),
+                            ),
+                          ]
                         ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Nama'),
-                                Text('Alamat'),
-                                Text('PIC'),
-                                Text('No. HP'),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Column(
-                              children: [
-                                Text(':'),
-                                Text(':'),
-                                Text(':'),
-                                Text(':'),
-                              ],
-                            ),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('$namaKlien'),
-                                  Text(
-                                      'Jl. Penyu No. 12, Cilacap, Jawa Tengah'),
-                                  Text('Bu Eko'),
-                                  Text('08128xxxxxxx'),
-                                ],
+                        TableRow(
+                            children: [
+                              Container(
+                                height: 30,
+                                child: Text('Alamat '),
                               ),
-                            )
-                          ],
-                        )
+                              Container(
+                                height: 30,
+                                child: Text(': $alamat'),
+                              ),
+                            ]
+                        ),
+                        TableRow(
+                            children: [
+                              Container(
+                                height: 30,
+                                child: Text('Kontak Person '),
+                              ),
+                              Container(
+                                height: 30,
+                                child: Text(': '),
+                              ),
+                            ]
+                        ),
+                        TableRow(
+                            children: [
+                              Container(
+                                height: 30,
+                                child: Text('No. HP. '),
+                              ),
+                              Container(
+                                height: 30,
+                                child: Text(': '),
+                              ),
+                            ]
+                        ),
                       ],
-                    ),
+                    )
+                    // Column(
+                    //   children: [
+                    //     Row(
+                    //       children: const [
+                    //         Expanded(
+                    //           child: Text('Profil',
+                    //               textAlign: TextAlign.center,
+                    //               style: TextStyle(
+                    //                 color: Colors.black87,
+                    //                 fontSize: 18,
+                    //                 fontWeight: FontWeight.bold,
+                    //               )),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //     const SizedBox(
+                    //       height: 10,
+                    //     ),
+                    //     Row(
+                    //       children: [
+                    //         Column(
+                    //           crossAxisAlignment: CrossAxisAlignment.start,
+                    //           children: const [
+                    //             Text('Nama'),
+                    //             SizedBox(height: 10,),
+                    //             Text('Alamat'),
+                    //             Text('PIC'),
+                    //             Text('No. HP'),
+                    //           ],
+                    //         ),
+                    //         const SizedBox(
+                    //           width: 10,
+                    //         ),
+                    //         Column(
+                    //           crossAxisAlignment: CrossAxisAlignment.start,
+                    //           children:  [
+                    //             Text(': $namaKlien'),
+                    //             Text(': Jl. Penyu No. 12, Cilacap, Jawa Tengah'),
+                    //             Text(': Bu Eko'),
+                    //             Text(': 08128xxxxxxx'),
+                    //           ],
+                    //         ),
+                    //       ],
+                    //     )
+                    //   ],
+                    // ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Container(
                       // alignment: Alignment.centerLeft,
                       //   height: 900,
-                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(5),
@@ -199,12 +247,12 @@ class _DashboardClientState extends State<DashboardClient> {
                             color: Colors.grey.withOpacity(0.5),
                             spreadRadius: 5,
                             blurRadius: 7,
-                            offset: Offset(0, 3),
+                            offset: const Offset(0, 3),
                           ),
                           ]),
                       child: Column(
                         children: [
-                          Text('Status Audit',
+                          const Text('Status Audit',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.black87,
@@ -219,7 +267,7 @@ class _DashboardClientState extends State<DashboardClient> {
                               HorizontalTitlePosition.bottom,
                               horizontalLinePosition: HorizontalLinePosition.top,
                               currentStep: tuples.length - 1,
-                              physics: ClampingScrollPhysics(),
+                              physics: const ClampingScrollPhysics(),
                               steps: tuples
                                   .map((e) => EnhanceStep(
                                   icon: Icon(
@@ -232,7 +280,7 @@ class _DashboardClientState extends State<DashboardClient> {
                                   isActive: _index == tuples.indexOf(e),
                                   title: Text(e.tanggal ?? ''),
                                   subtitle: Text(e.description ?? ''),
-                                  content: SizedBox()))
+                                  content: const SizedBox()))
                                   .toList(),
                               onStepCancel: () {
                                 // go(-1);
@@ -248,7 +296,7 @@ class _DashboardClientState extends State<DashboardClient> {
                               },
                               controlsBuilder:
                                   (BuildContext context, ControlsDetails details) {
-                                return SizedBox();
+                                return const SizedBox();
                               })
 
                         ],
@@ -256,13 +304,13 @@ class _DashboardClientState extends State<DashboardClient> {
 
 
             ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Container(
                     // alignment: Alignment.centerLeft,
                     //   height: 200,
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(5),
@@ -270,7 +318,7 @@ class _DashboardClientState extends State<DashboardClient> {
                           color: Colors.grey.withOpacity(0.5),
                           spreadRadius: 5,
                           blurRadius: 7,
-                          offset: Offset(0, 3),
+                          offset: const Offset(0, 3),
                         ),
                     ]),
                     child: Center(
@@ -278,7 +326,7 @@ class _DashboardClientState extends State<DashboardClient> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          Text('Lokasi',
+                          const Text('Lokasi',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.black87,
@@ -300,13 +348,13 @@ class _DashboardClientState extends State<DashboardClient> {
                                 37.4220041,
                                 -122.0862462,
                                 'Google Headquarters are here'),
-                            child: Text('LAUNCH COORDINATES'),
+                            child: const Text('LAUNCH COORDINATES'),
                           ),
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                 ],

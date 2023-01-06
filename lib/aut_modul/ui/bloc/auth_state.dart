@@ -21,7 +21,8 @@ class AuthState extends Equatable {
     this.nama_cp,
     this.email,
     this.username,
-    this.password, this.status = AuthStateStatus.initial,
+    this.password,
+    this.status = AuthStateStatus.initial,
     this.message
 });
 
@@ -49,7 +50,8 @@ class AuthState extends Equatable {
 
   AuthState copyWith ({
     String? username,
-    String? password, AuthStateStatus? status,
+    String? password,
+    AuthStateStatus? status,
     String? message,
     String? nama_klien,
     String? alamat,

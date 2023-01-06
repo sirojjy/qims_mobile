@@ -11,28 +11,29 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
+        preferredSize: preferredSize,
         child: AppBar(
-          backgroundColor: Color(0xff0CACFF),
+          backgroundColor: const Color(0xff0CACFF),
           leading: Padding(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: ClipRRect(
+              borderRadius: BorderRadius.circular(5),
               child: Image.asset(
                 'assets/images/logo_qai.jpg',
                 scale: 1,
                 // height: 10,
               ),
-              borderRadius: BorderRadius.circular(5),
             ),
           ),
           title: Text(
             '$judul',
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
           ),
           actions: [
-            Container(
+            SizedBox(
               width: 50,
               child: IconButton(
-                icon: Icon(Icons.person),
+                icon: const Icon(Icons.person),
                 onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilClient()));
                 },
@@ -40,7 +41,6 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
 
             )
           ],
-        ),
-        preferredSize: preferredSize);
+        ));
   }
 }

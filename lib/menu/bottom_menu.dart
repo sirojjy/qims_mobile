@@ -3,9 +3,9 @@ import 'package:circular_bottom_navigation/tab_item.dart';
 import 'package:flutter/material.dart';
 import 'package:qims_mobile/dashboard_client/ui/screen/audit_client.dart';
 import 'package:qims_mobile/dashboard_client/ui/screen/dashboard_client.dart';
-import 'package:qims_mobile/dashboard_client/ui/screen/dokumen_klien.dart';
+import 'package:qims_mobile/dokumen/ui/screen/dokumen_klien.dart';
 import 'package:qims_mobile/dashboard_client/ui/screen/post_audit.dart';
-import 'package:qims_mobile/dashboard_client/ui/screen/pra_audit_client.dart';
+import 'package:qims_mobile/pra_audit_client/ui/screen/pra_audit_client.dart';
 
 class BottomMenu extends StatefulWidget {
   const BottomMenu({Key? key}) : super(key: key);

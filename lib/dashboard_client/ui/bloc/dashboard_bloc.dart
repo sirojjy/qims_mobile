@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 import 'package:qims_mobile/share/api_constant.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -28,12 +27,13 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     );
 
     try{
-      var url = Uri.parse(ApiConstant.authentication);
+      var url = Uri.parse(ApiConstant.klien);
       var request = await http.post(
         url,
         body: {
           'status' : event.status,
           'id_klien' : event.id_klien,
+          'alamat' : event.alamat,
         }
       );
       var response = jsonDecode(request.body);

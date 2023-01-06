@@ -176,7 +176,7 @@ class _RegisterState extends State<Register> {
                           margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                           child: ElevatedButton(
                             onPressed: () {
-                              print('hello');
+                              // print('hello');
                               context.read<AuthBloc>().add(OnRegisterEvent(
                                 param: 'register',
                                 nama_cp: namaCpController.text,
