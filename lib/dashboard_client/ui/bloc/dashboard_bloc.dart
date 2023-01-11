@@ -32,8 +32,15 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
         url,
         body: {
           'status' : event.status,
-          'id_klien' : event.id_klien,
-          'alamat' : event.alamat,
+          'id_klien' : prefs.getString('id_klien'),
+          'profil' : event.profil,
+          'cor' : event.cor,
+          'telah_dijadwalkan' : event.telah_dijadwalkan,
+          'selesai' : event.selesai,
+          'jml_sertifikat' : event.jml_sertifikat,
+          'ncr' : event.ncr,
+          'maps' : event.maps,
+          'tgl_sert_awal' : event.tgl_sert_awal,
         }
       );
       var response = jsonDecode(request.body);
@@ -59,5 +66,6 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
         )
       );
     }
+
   }
 }

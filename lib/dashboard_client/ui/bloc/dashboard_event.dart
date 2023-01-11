@@ -1,6 +1,6 @@
 part of 'dashboard_bloc.dart';
 
-class DashboardEvent extends Equatable{
+class DashboardEvent extends Equatable {
   @override
   List<Object?> get props => [];
 }
@@ -10,25 +10,27 @@ class OnDashboardEvent extends DashboardEvent {
   final String? id_klien;
   final String? id_users;
   final String? message;
-
-  final String? alamat;
-
-  final String? rencana_audit;
-  final String? nama_iso;
-  final String? dok_file;
-  final String? detail_file;
-  final String? nama_klien;
+  final String? profil;
+  final String? cor;
+  final String? telah_dijadwalkan;
+  final String? selesai;
+  final String? jml_sertifikat;
+  final String? ncr;
+  final String? maps;
+  final String? tgl_sert_awal;
 
   OnDashboardEvent(
-      this.status,
-      this.id_klien,
-      this.id_users,
-      this.rencana_audit,
-      this.nama_iso,
-      this.dok_file,
-      this.detail_file,
-      this.nama_klien,
-      this.message,
-      this.alamat
-      );
+    this.status,
+    this.id_klien,
+    this.id_users,
+    this.message,
+    this.profil,
+    this.cor,
+    this.telah_dijadwalkan,
+    this.selesai,
+    this.jml_sertifikat,
+    this.ncr,
+    this.maps,
+    this.tgl_sert_awal,
+  );
 }

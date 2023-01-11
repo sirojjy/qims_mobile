@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qims_mobile/aut_modul/ui/screen/login.dart';
 import 'package:qims_mobile/aut_modul/ui/screen/register.dart';
+import 'package:qims_mobile/dashboard_client/ui/bloc/dashboard_bloc.dart';
 import 'package:qims_mobile/dashboard_client/ui/screen/audit_client.dart';
 import 'package:qims_mobile/dashboard_client/ui/screen/dashboard_client.dart';
 import 'package:qims_mobile/dokumen/ui/screen/dokumen_klien.dart';
@@ -17,7 +18,8 @@ void main() {
   runApp(
       MultiBlocProvider(
         providers: [
-          BlocProvider(create: (BuildContext context) => AuthBloc())
+          BlocProvider(create: (BuildContext context) => AuthBloc()),
+          BlocProvider(create: (BuildContext context) => DashboardBloc())
         ],
         child: const MyApp(),
       )
@@ -47,7 +49,7 @@ class MyApp extends StatelessWidget {
         CustomRoutes.praAuditClient : (context) => const PraAuditClient(),
         CustomRoutes.auditClient : (context) => const AuditClient(),
         CustomRoutes.postAuditClient : (context) => const PostAuditClient(),
-        CustomRoutes.dokumenClient : (context) => const DokumenClient(),
+        CustomRoutes.dokumenClient : (context) => DokumenClient(),
         CustomRoutes.profilClient : (context) => const ProfilClient(),
       },
     );
