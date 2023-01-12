@@ -16,7 +16,8 @@ class DashboardState extends Equatable {
     this.id_users,
     this.message,
     //profil
-    this.profil,
+    this.nama_klien,
+    this.alamat,
     this.cor,
     this.telah_dijadwalkan,
     this.selesai,
@@ -31,7 +32,8 @@ class DashboardState extends Equatable {
   final String? id_users;
   final String? message;
   //profil
-  final String? profil;
+  final String? nama_klien;
+  final String? alamat;
   final String? cor;
   final String? telah_dijadwalkan;
   final String? selesai;
@@ -47,7 +49,8 @@ class DashboardState extends Equatable {
         id_klien,
         id_users,
         message,
-        profil,
+        nama_klien,
+        alamat,
         cor,
         telah_dijadwalkan,
         selesai,
@@ -63,7 +66,8 @@ class DashboardState extends Equatable {
     String? id_users,
     String? message,
     //profil
-    String? profil,
+    String? nama_klien,
+    String? alamat,
     String? cor,
     String? telah_dijadwalkan,
     String? selesai,
@@ -78,7 +82,8 @@ class DashboardState extends Equatable {
       id_users: id_users ?? this.id_users,
       message: message ?? this.message,
       //profil
-      profil: profil ?? this.profil,
+      nama_klien: nama_klien ?? this.nama_klien,
+      alamat: alamat ?? this.alamat,
       cor: cor ?? this.cor,
       telah_dijadwalkan: telah_dijadwalkan ?? this.telah_dijadwalkan,
       selesai: selesai ?? this.selesai,

@@ -38,6 +38,7 @@ class _DashboardClientState extends State<DashboardClient> {
   
   @override
   void initState() {
+    BlocProvider.of<DashboardBloc>(context).add(OnDashboardEvent());
     // TODO: implement initState
     getPref();
     super.initState();
@@ -116,8 +117,6 @@ class _DashboardClientState extends State<DashboardClient> {
                         height: 10,
                       ),
 
-
-
                       const SizedBox(
                         height: 10,
                       ),
@@ -149,7 +148,7 @@ class _DashboardClientState extends State<DashboardClient> {
                                   ),
                                   Container(
                                     height: 30,
-                                    child: Text(state.profil ?? ''),
+                                    child: Text(': ${state.nama_klien}' ?? ''),
                                   ),
                                 ]
                             ),
@@ -161,7 +160,7 @@ class _DashboardClientState extends State<DashboardClient> {
                                   ),
                                   Container(
                                     height: 30,
-                                    child: Text(': $alamat'),
+                                    child: Text(': ${state.alamat}' ?? ''),
                                   ),
                                 ]
                             ),
