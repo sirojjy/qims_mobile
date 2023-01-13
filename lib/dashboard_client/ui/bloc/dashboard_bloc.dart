@@ -49,6 +49,9 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
             status: DashboardStateStatus.success,
             nama_klien: response['profil'][0]['nama_klien'],
             alamat: response['profil'][0]['alamat'],
+            nama_cp: response['profil'][0]['nama_cp'],
+            no_hp: response['profil'][0]['no_hp'],
+            email: response['profil'][0]['email'],
 
 
           )

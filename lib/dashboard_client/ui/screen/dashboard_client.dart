@@ -20,9 +20,8 @@ class _DashboardClientState extends State<DashboardClient> {
   
   SharedPreferences? pref;
   var namaKlien;
-  var alamat;
-  var profil;
-  
+
+
 
   StepperType _type = StepperType.vertical;
 
@@ -168,11 +167,11 @@ class _DashboardClientState extends State<DashboardClient> {
                                 children: [
                                   Container(
                                     height: 30,
-                                    child: Text('Kontak Person '),
+                                    child: Text('PIC '),
                                   ),
                                   Container(
                                     height: 30,
-                                    child: Text(': '),
+                                    child: Text(': ${state.nama_cp}' ?? ''),
                                   ),
                                 ]
                             ),
@@ -180,14 +179,26 @@ class _DashboardClientState extends State<DashboardClient> {
                                 children: [
                                   Container(
                                     height: 30,
-                                    child: Text('No. HP. '),
+                                    child: Text('Kontak '),
                                   ),
                                   Container(
                                     height: 30,
-                                    child: Text(': '),
+                                    child: Text(': ${state.no_hp}' ?? ''),
                                   ),
                                 ]
                             ),
+                            // TableRow(
+                            //     children: [
+                            //       Container(
+                            //         height: 30,
+                            //         child: Text('Email '),
+                            //       ),
+                            //       Container(
+                            //         height: 30,
+                            //         child: Text(': ${state.email}' ?? ''),
+                            //       ),
+                            //     ]
+                            // ),
                           ],
                         ),
                       ),
