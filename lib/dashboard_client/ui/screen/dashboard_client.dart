@@ -17,7 +17,9 @@ class DashboardClient extends StatefulWidget {
 }
 
 class _DashboardClientState extends State<DashboardClient> {
+  //PDF Viewer
   final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
+
   int groupValue = 0;
   
   SharedPreferences? pref;
@@ -234,7 +236,22 @@ class _DashboardClientState extends State<DashboardClient> {
                                           child: Text('File Sertifikat'),
                                         ),
                                         onPressed: () {
-                                          _pdfViewerKey.currentState?.openBookmarkView();
+                                          showDialog(
+                                              context: context,
+                                              builder: (context) {
+                                                return Dialog(
+                                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                                  elevation: 16,
+                                                  child: Container(
+                                                    child: SfPdfViewer.network(
+                                                      // 'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
+                                                      '${state.sert}',
+                                                      key: _pdfViewerKey,
+                                                    ),
+                                                  ),
+                                                );
+                                              }
+                                          );
                                         },
                                     )
                                   ],
