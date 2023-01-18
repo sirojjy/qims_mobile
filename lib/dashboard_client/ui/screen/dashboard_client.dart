@@ -7,6 +7,7 @@ import 'package:qims_mobile/dashboard_client/ui/bloc/dashboard_bloc.dart';
 import 'package:qims_mobile/share/custom_appbar.dart';
 import 'package:qims_mobile/share/custom_container.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class DashboardClient extends StatefulWidget {
   const DashboardClient({Key? key}) : super(key: key);
@@ -16,6 +17,7 @@ class DashboardClient extends StatefulWidget {
 }
 
 class _DashboardClientState extends State<DashboardClient> {
+  final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
   int groupValue = 0;
   
   SharedPreferences? pref;
@@ -68,12 +70,12 @@ class _DashboardClientState extends State<DashboardClient> {
                         height: 10,
                       ),
                       Row(
-                        children: const [
+                        children:  [
                           CustomContainer(
                             color1: Color(0xff1AF0AC),
                             color2: Color(0xff11B9AF),
                             icon: Icons.check_box,
-                            text1: '1',
+                            text1: '${state.jml_sertifikat}',
                             text2: 'Sertifikat Aktif',
                           ),
                           SizedBox(
@@ -83,21 +85,21 @@ class _DashboardClientState extends State<DashboardClient> {
                             color1: Color(0xff52E5E7),
                             color2: Color(0xff108CFF),
                             icon: Icons.calendar_month,
-                            text1: '1',
+                            text1: '${state.telah_dijadwalkan}',
                             text2: 'Kegiatan Dijadwalkan',
                           ),
                         ],
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 10,
                       ),
                       Row(
-                        children: const [
+                        children:  [
                           CustomContainer(
                             color1: Color(0xffFCCF31),
                             color2: Color(0xffF55555),
                             icon: Icons.schedule_sharp,
-                            text1: '0',
+                            text1: '${state.dijadwalkan}',
                             text2: 'Jadwal Akan Datang',
                           ),
                           SizedBox(
@@ -107,7 +109,7 @@ class _DashboardClientState extends State<DashboardClient> {
                             color1: Color(0xffF761A1),
                             color2: Color(0xff8C1BAB),
                             icon: Icons.done_all,
-                            text1: '0',
+                            text1: '${state.selesai}',
                             text2: 'Kegiatan Selesai',
                           ),
                         ],
@@ -116,9 +118,7 @@ class _DashboardClientState extends State<DashboardClient> {
                         height: 10,
                       ),
 
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      //PROFIL KLIEN
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                         decoration: BoxDecoration(
@@ -143,7 +143,7 @@ class _DashboardClientState extends State<DashboardClient> {
                                 children: [
                                   Container(
                                     height: 30,
-                                    child: Text('Nama '),
+                                    child: Text('Nama Klien'),
                                   ),
                                   Container(
                                     height: 30,
@@ -187,21 +187,64 @@ class _DashboardClientState extends State<DashboardClient> {
                                   ),
                                 ]
                             ),
-                            // TableRow(
-                            //     children: [
-                            //       Container(
-                            //         height: 30,
-                            //         child: Text('Email '),
-                            //       ),
-                            //       Container(
-                            //         height: 30,
-                            //         child: Text(': ${state.email}' ?? ''),
-                            //       ),
-                            //     ]
-                            // ),
                           ],
                         ),
                       ),
+                      //PROFIL KLIEN END
+
+                      const SizedBox(
+                        height: 10,
+                      ),
+
+                      //SERTIFIKAT
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                          boxShadow: [BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: const Offset(0, 3),
+                          ),
+                          ],
+                        ),
+                        child:
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Flexible(
+                                child: Column(
+                                  children: [
+                                    Text('Sertifikat', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),), SizedBox(height: 10),
+                                    Text('ISO ${state.nama_iso}'), SizedBox(height: 10),
+                                    Text('ID ${state.no_reg}'), SizedBox(height: 10),
+                                    Text('Scope ${state.scope}'), SizedBox(height: 10),
+                                    Text('Surveillance ${state.tgl_asses}'), SizedBox(height: 10),
+                                    Text('Expired ${state.tgl_expire}'), SizedBox(height: 10),
+                                    ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          padding: EdgeInsets.zero,
+                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
+                                        ),
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 30, right: 30),
+                                          child: Text('File Sertifikat'),
+                                        ),
+                                        onPressed: () {
+                                          _pdfViewerKey.currentState?.openBookmarkView();
+                                        },
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          )
+                      ),
+                      //SERTIFIKAT END
+
                       const SizedBox(
                         height: 20,
                       ),
@@ -335,6 +378,5 @@ class _DashboardClientState extends State<DashboardClient> {
       ),
     );
   }
-
 }
 

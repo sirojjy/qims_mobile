@@ -30,8 +30,10 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
         url,
         body: {
           'id_klien' : prefs.getString('id_klien'),
+          // 'level' : prefs.getString('level'),
         }
       );
+      // print('Level : $');
 
 
       var response = jsonDecode(request.body);
@@ -52,6 +54,18 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
             nama_cp: response['profil'][0]['nama_cp'],
             no_hp: response['profil'][0]['no_hp'],
             email: response['profil'][0]['email'],
+
+            jml_sertifikat: response['jml_sertifikat'],
+            telah_dijadwalkan: response['telah_dijadwalkan'],
+            dijadwalkan: response['dijadwalkan'],
+            selesai: response['selesai'],
+
+            no_reg: response['cor'][0]['no_reg'],
+            nama_iso: response['cor'][0]['nama_iso'],
+            scope: response['cor'][0]['scope'],
+            tgl_expire: response['cor'][0]['tgl_expire'],
+            tgl_asses: response['cor'][0]['tgl_asses'],
+            sert: response['cor'][0]['sert'],
 
 
           )

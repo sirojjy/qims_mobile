@@ -23,7 +23,8 @@ class AuthState extends Equatable {
     this.username,
     this.password,
     this.status = AuthStateStatus.initial,
-    this.message
+    this.message,
+    this.level,
 });
 
   final String? username;
@@ -34,6 +35,7 @@ class AuthState extends Equatable {
   final String? alamat;
   final String? nama_cp;
   final String? email;
+  final String? level;
 
   @override
   // TODO: implement props
@@ -46,6 +48,7 @@ class AuthState extends Equatable {
     alamat,
     nama_cp,
     email,
+    level,
   ];
 
   AuthState copyWith ({
@@ -57,6 +60,7 @@ class AuthState extends Equatable {
     String? alamat,
     String? nama_cp,
     String? email,
+    String? level,
   }) {
     return AuthState(
       username: username ?? this.username,
@@ -67,6 +71,7 @@ class AuthState extends Equatable {
       alamat: alamat ?? this.alamat,
       nama_cp: nama_cp ?? this.nama_cp,
       email: email ?? this.email,
+      level: level ?? this.level,
     );
   }
 
