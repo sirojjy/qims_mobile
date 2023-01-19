@@ -4,6 +4,7 @@ import 'package:qims_mobile/aut_modul/ui/screen/register.dart';
 import 'package:qims_mobile/dashboard_client/ui/bloc/dashboard_bloc.dart';
 import 'package:qims_mobile/dashboard_client/ui/screen/audit_client.dart';
 import 'package:qims_mobile/dashboard_client/ui/screen/dashboard_client.dart';
+import 'package:qims_mobile/dokumen/ui/bloc/dokumen_bloc.dart';
 import 'package:qims_mobile/dokumen/ui/screen/dokumen_klien.dart';
 import 'package:qims_mobile/dashboard_client/ui/screen/post_audit.dart';
 import 'package:qims_mobile/pra_audit_client/ui/screen/pra_audit_client.dart';
@@ -19,7 +20,8 @@ void main() {
       MultiBlocProvider(
         providers: [
           BlocProvider(create: (BuildContext context) => AuthBloc()),
-          BlocProvider(create: (BuildContext context) => DashboardBloc())
+          BlocProvider(create: (BuildContext context) => DashboardBloc()),
+          BlocProvider(create: (BuildContext context) => DokumenBloc()),
         ],
         child: const MyApp(),
       )

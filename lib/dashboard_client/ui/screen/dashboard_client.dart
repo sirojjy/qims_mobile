@@ -244,8 +244,8 @@ class _DashboardClientState extends State<DashboardClient> {
                                                   elevation: 16,
                                                   child: Container(
                                                     child: SfPdfViewer.network(
-                                                      // '${state.sert}',
-                                                      'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
+                                                      'http://123.100.226.123:3010/file_uploads/sertifikat/${state.sert}',
+                                                      // 'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
                                                       key: _pdfViewerKey,
                                                     ),
                                                   ),
