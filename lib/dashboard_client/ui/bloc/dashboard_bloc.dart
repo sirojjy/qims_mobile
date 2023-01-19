@@ -38,6 +38,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
 
       var response = jsonDecode(request.body);
       print('print ${response['profil'][0]['nama_klien']}');
+      print('print ${response['cor'][0]['sert']}');
       if(response['status'] == 'fail') {
         emit(
           state.copyWith(
