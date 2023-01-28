@@ -37,16 +37,7 @@ class DokumenBloc extends Bloc<DokumenEvent, DokumenState> {
       );
 
       var response = jsonDecode(request.body);
-      // if(response['status'] == 'fail') {
-      //   print('NDENE RA SIH? 1');
-      //   emit(
-      //       state.copyWith(
-      //         message:response['error_msg'],
-      //         status: DokumenStateStatus.error,
-      //       )
-      //   );
-      // } else {
-        print('NDENE RA SIH? 2');
+      //   print('NDENE RA SIH? 2');
         for(int i=0; i<response.length; i++){
           data.add(DokumenModel(
             namaDokumen: response[i]['nama_dok'],
@@ -57,11 +48,11 @@ class DokumenBloc extends Bloc<DokumenEvent, DokumenState> {
 
 
         //CEK Perulangan
-        for(int i=0; i<data.length; i++){
+        // for(int i=0; i<data.length; i++){
           // print('HALOO : ${data[i].namaDokumen}');
           //CEK FileDok
           // print('URL : ${data[i].fileDok}');
-        }
+        // }
         emit(
           state.copyWith(
             status: DokumenStateStatus.success,
@@ -70,7 +61,7 @@ class DokumenBloc extends Bloc<DokumenEvent, DokumenState> {
         );
       // }
     } catch (error) {
-      print('NDENE RA SIH? 3$error}');
+      // print('NDENE RA SIH? 3$error}');
       emit(
         state.copyWith(
           status: DokumenStateStatus.error,

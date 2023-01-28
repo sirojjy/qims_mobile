@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qims_mobile/dashboard_client/ui/bloc/dashboard_bloc.dart';
 import 'package:qims_mobile/dokumen/ui/bloc/dokumen_bloc.dart';
 import 'package:qims_mobile/share/custom_appbar.dart';
-import 'package:qims_mobile/share/custom_list.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-import '../../../share/custom_collapse.dart';
 
 
 class DokumenClient extends StatefulWidget {
@@ -36,28 +33,6 @@ class _DokumenClientState extends State<DokumenClient> {
   void getPref() async{
     pref = await SharedPreferences.getInstance();
   }
-
-
-  // List<Item> itemenu = [];
-  //  = <Item>[
-  //   Item('Edit', Icon(Icons.edit)),
-  //   Item('Hapus', Icon(Icons.delete)),
-  // ];
-
-  // String _item = "Aksi";
-  // final _items = ["Aksi", "Edit", "Hapus"];
-  //
-  // @override
-  // void initState() {
-       // TODO: implement initState
-  //   super.initState();
-  //   itemenu.addAll(
-  //     [
-  //       Item('Edit', Icon(Icons.edit)),
-  //       Item('Hapus', Icon(Icons.delete))
-  //     ],
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -99,50 +74,32 @@ class _DokumenClientState extends State<DokumenClient> {
                             );
                           },
                         ),
-                        title: Text('${state.data[index].namaDokumen}'),
-                        subtitle: Text('${state.data[index].jenisDok}'),
+                        title: GestureDetector(
+                          child: Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('${state.data[index].namaDokumen}'),
+                                Text(
+                                  '${state.data[index].jenisDok}',
+                                  style: const TextStyle(fontSize: 14),
+                                ),
+                              ],
+                            ),
+                          ),
+                          onTap: () {},
+                        ),
+                        // subtitle: Text('${state.data[index].jenisDok}'),
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            IconButton(
-                              icon: const Icon(Icons.edit),
-                              onPressed: (){},
-                            ),
-                            // SizedBox(width: 20,),
                             IconButton(
                               icon: const Icon(Icons.delete),
                               onPressed: (){},
                             ),
                           ],
                         )
-                      // DropdownButton(
-                      //   items: _items
-                      //       .map((String item) =>
-                      //       DropdownMenuItem<String>(
-                      //           child: Row(
-                      //             mainAxisAlignment: MainAxisAlignment.end,
-                      //             children: [
-                      //               SizedBox(
-                      //                 width: 50,
-                      //                   child: Text(item)),
-                      //               SizedBox(width: 20,),
-                      //               item == 'Edit' ? Icon(Icons.edit) :
-                      //               item == 'Hapus' ? Icon(Icons.delete) :
-                      //               SizedBox()
-                      //             ],
-                      //           ), value: item))
-                      //       .toList(),
-                      //   onChanged: (value) {
-                      //     // setState(() {
-                      //     //   print("previous ${this._salutation}");
-                      //     //   print("selected $value");
-                      //     //   this._salutation = value;
-                      //     // });
-                      //   },
-                      //   value: _item,
-                      // ),
                     ),
-
                   );
                 },
               )
