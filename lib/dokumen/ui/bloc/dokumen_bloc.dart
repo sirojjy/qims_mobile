@@ -17,10 +17,12 @@ part 'dokumen_state.dart';
 
 class DokumenBloc extends Bloc<DokumenEvent, DokumenState> {
   DokumenBloc() : super(DokumenState(data: [])) {
-    on<DokumenEvent>(_validateToDokumen);
+    on<OnDokumenView>(_validateToDokumen);
+    on<OnDokumenTambah>(_validateAddDokumen);
   }
 
-  FutureOr<void> _validateToDokumen(DokumenEvent event, Emitter<DokumenState> emit) async{
+  ///BLOC View Data
+  FutureOr<void> _validateToDokumen(OnDokumenView event, Emitter<DokumenState> emit) async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var data = <DokumenModel>[];
     emit(
@@ -49,10 +51,10 @@ class DokumenBloc extends Bloc<DokumenEvent, DokumenState> {
         }
 
 
-        //CEK Perulangan
+        ///CEK Perulangan
         // for(int i=0; i<data.length; i++){
           // print('HALOO : ${data[i].namaDokumen}');
-          //CEK FileDok
+          ///CEK FileDok
           // print('URL : ${data[i].fileDok}');
         // }
         emit(
@@ -73,7 +75,51 @@ class DokumenBloc extends Bloc<DokumenEvent, DokumenState> {
     }
   }
 
-  FutureOr<void> _validateAddDokumen(DokumenEvent event, Emitter<DokumenState> emit) async {
+  ///BLOC Tambah Data
+  FutureOr<void> _validateAddDokumen(OnDokumenTambah event, Emitter<DokumenState> emit) async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      try {
+        if(event.nama_dok == '' && event.jenis_dok == '' && event.file == ''){
+          state.copyWith(
+            status: DokumenStateStatus.error,
+            message: 'Silahkan isi data terlebih dahulu',
+          );
+        } else {
+          var url = Uri.parse(ApiConstant.actDokCenter);
+          var request = await http.post(
+            url,
+            body: {
+              'nama_dok' : event.nama_dok,
+              'jenis_dok' : event.jenis_dok,
+              'file' : event.file,
+            }
+          );
+
+          ///balikan
+          var response = jsonDecode(request.body);
+          print('INI HASILNYA : $response');
+          if(response['status'] == 'gagal' ){
+            emit(
+              state.copyWith(
+                message: response['error_msg'],
+                status: DokumenStateStatus.error,
+              )
+            );
+          } else {
+            emit(
+              state.copyWith(
+                status: DokumenStateStatus.success,
+              )
+            );
+          }
+        }
+      } catch(error, stacktrace){
+        emit(
+          state.copyWith(
+            status: DokumenStateStatus.error
+          )
+        );
+      }
   }
 }

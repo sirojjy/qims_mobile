@@ -5,18 +5,22 @@ class DokumenEvent extends Equatable{
   List<Object> get props => [];
 }
 
-class OnDokumenEvent extends DokumenEvent {
+class OnDokumenView extends DokumenEvent {
 
 }
 
 class OnDokumenEdit extends DokumenEvent {
   final String? nama_dok;
   final String? jenis_dok;
-  final File? file_dok;
+  final File? file;
 
-  OnDokumenEdit(this.nama_dok, this.jenis_dok, this.file_dok);
+  OnDokumenEdit(this.nama_dok, this.jenis_dok, this.file);
 }
 
 class OnDokumenTambah extends DokumenEvent {
+  final String? nama_dok;
+  final String? jenis_dok;
+  final File? file;
 
+  OnDokumenTambah(this.nama_dok, this.jenis_dok, this.file);
 }

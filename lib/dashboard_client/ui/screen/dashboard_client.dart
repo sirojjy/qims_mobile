@@ -95,11 +95,13 @@ class _DashboardClientState extends State<DashboardClient> {
                                 children: [
                                   Container(
                                     height: 30,
-                                    child: Text('Nama Klien'),
+                                    child: SizedBox.shrink(),
                                   ),
                                   Container(
                                     height: 30,
-                                    child: Text(': ${state.nama_klien}' ?? ''),
+                                    child: Text(': ${state.nama_klien}' ?? '',
+                                      style: TextStyle(fontWeight: FontWeight.bold),
+                                    ),
                                   ),
                                 ]
                             ),
@@ -265,77 +267,75 @@ class _DashboardClientState extends State<DashboardClient> {
                       const SizedBox(
                         height: 20,
                       ),
-                      Container(
-                        // alignment: Alignment.centerLeft,
-                        //   height: 900,
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5),
-                              boxShadow: [BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 5,
-                                blurRadius: 7,
-                                offset: const Offset(0, 3),
-                              ),
-                              ]),
-                          child: Column(
-                            children: [
-                              const Text('Status Audit',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.black87,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  )),
-
-                              EnhanceStepper(
-                                // stepIconSize: 60,
-                                  type: _type,
-                                  horizontalTitlePosition:
-                                  HorizontalTitlePosition.bottom,
-                                  horizontalLinePosition: HorizontalLinePosition.top,
-                                  currentStep: tuples.length - 1,
-                                  physics: const ClampingScrollPhysics(),
-                                  steps: tuples
-                                      .map((e) => EnhanceStep(
-                                      icon: Icon(
-                                        e.directions_bike,
-                                        // Icons.add,
-                                        color: Colors.blue,
-                                        size: 30,
-                                      ),
-                                      state: StepState.values[tuples.indexOf(e)],
-                                      isActive: _index == tuples.indexOf(e),
-                                      title: Text(e.tanggal ?? ''),
-                                      subtitle: Text(e.description ?? ''),
-                                      content: const SizedBox()))
-                                      .toList(),
-                                  onStepCancel: () {
-                                    // go(-1);
-                                  },
-                                  onStepContinue: () {
-                                    // go(1);
-                                  },
-                                  onStepTapped: (index) {
-                                    // ddlog(index);
-                                    setState(() {
-                                      _index = index;
-                                    });
-                                  },
-                                  controlsBuilder:
-                                      (BuildContext context, ControlsDetails details) {
-                                    return const SizedBox();
-                                  })
-
-                            ],
-                          )
-
-
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      // Container(
+                      //   // alignment: Alignment.centerLeft,
+                      //   //   height: 900,
+                      //     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      //     decoration: BoxDecoration(
+                      //         color: Colors.white,
+                      //         borderRadius: BorderRadius.circular(5),
+                      //         boxShadow: [BoxShadow(
+                      //           color: Colors.grey.withOpacity(0.5),
+                      //           spreadRadius: 5,
+                      //           blurRadius: 7,
+                      //           offset: const Offset(0, 3),
+                      //         ),
+                      //         ]),
+                      //     child: Column(
+                      //       children: [
+                      //         const Text('Status Audit',
+                      //             textAlign: TextAlign.center,
+                      //             style: TextStyle(
+                      //               color: Colors.black87,
+                      //               fontSize: 18,
+                      //               fontWeight: FontWeight.bold,
+                      //             )),
+                      //
+                      //         EnhanceStepper(
+                      //           // stepIconSize: 60,
+                      //             type: _type,
+                      //             horizontalTitlePosition:
+                      //             HorizontalTitlePosition.bottom,
+                      //             horizontalLinePosition: HorizontalLinePosition.top,
+                      //             currentStep: tuples.length - 1,
+                      //             physics: const ClampingScrollPhysics(),
+                      //             steps: tuples
+                      //                 .map((e) => EnhanceStep(
+                      //                 icon: Icon(
+                      //                   e.directions_bike,
+                      //                   // Icons.add,
+                      //                   color: Colors.blue,
+                      //                   size: 30,
+                      //                 ),
+                      //                 state: StepState.values[tuples.indexOf(e)],
+                      //                 isActive: _index == tuples.indexOf(e),
+                      //                 title: Text(e.tanggal ?? ''),
+                      //                 subtitle: Text(e.description ?? ''),
+                      //                 content: const SizedBox()))
+                      //                 .toList(),
+                      //             onStepCancel: () {
+                      //               // go(-1);
+                      //             },
+                      //             onStepContinue: () {
+                      //               // go(1);
+                      //             },
+                      //             onStepTapped: (index) {
+                      //               // ddlog(index);
+                      //               setState(() {
+                      //                 _index = index;
+                      //               });
+                      //             },
+                      //             controlsBuilder:
+                      //                 (BuildContext context, ControlsDetails details) {
+                      //               return const SizedBox();
+                      //             })
+                      //
+                      //       ],
+                      //     )
+                      // ),
+                      // const SizedBox(
+                      //   height: 20,
+                      // ),
                       Container(
                         // alignment: Alignment.centerLeft,
                         //   height: 200,

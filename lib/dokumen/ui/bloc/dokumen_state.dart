@@ -11,19 +11,17 @@ extension DokumenInitial on DokumenStateStatus {
 
 class DokumenState extends Equatable {
 
+  final DokumenStateStatus status;
+  final String? message;
+  final List<DokumenModel> data;
 
   DokumenState({
     this.status = DokumenStateStatus.initial,
     this.message,
     required this.data
-});
-  final DokumenStateStatus? status;
-  final String? message;
-  final List<DokumenModel> data;
-
+  });
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
     status,
     message,
@@ -34,13 +32,13 @@ class DokumenState extends Equatable {
      DokumenStateStatus? status,
      String? message,
     List<DokumenModel>? data
-}){
-    return DokumenState(
-      status: status ?? this.status,
-      message: message ?? this.message,
-      data: data ?? this.data
-    );
-}
+  }){
+      return DokumenState(
+        status: status ?? this.status,
+        message: message ?? this.message,
+        data: data ?? this.data
+      );
+  }
 
 
 }

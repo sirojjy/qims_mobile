@@ -28,7 +28,7 @@ class _DokumenClientState extends State<DokumenClient> {
 
   @override
   void initState() {
-    BlocProvider.of<DokumenBloc>(context).add(OnDokumenEvent());
+    BlocProvider.of<DokumenBloc>(context).add(OnDokumenView());
     getPref();
   }
   void getPref() async{
