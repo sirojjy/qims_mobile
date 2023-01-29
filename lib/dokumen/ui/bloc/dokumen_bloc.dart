@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:html';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -69,5 +70,9 @@ class DokumenBloc extends Bloc<DokumenEvent, DokumenState> {
         )
       );
     }
+  }
+
+  FutureOr<void> _validateAddDokumen(DokumenEvent event, Emitter<DokumenState> emit) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
   }
 }

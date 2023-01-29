@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qims_mobile/dokumen/ui/bloc/dokumen_bloc.dart';
+import 'package:qims_mobile/dokumen/ui/screen/dokumen_detail.dart';
 import 'package:qims_mobile/share/custom_appbar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
@@ -19,7 +20,7 @@ class DokumenClient extends StatefulWidget {
 
 class _DokumenClientState extends State<DokumenClient> {
   final List<String> judul_doc = ['Manual ISO 9001:2015', 'SOP', 'Lampiran', 'Kebijakan Mutu'];
-  final List<String> jenis_doc = ['Manual', 'SOP', 'Dokumen Lainnya', 'Dokumen Lainnya'];
+  final List<String> jenis_doc = ['Manual', 'SOP', 'Dokumen Lainnya'];
   SharedPreferences? pref;
 
   //PDF Viewer
@@ -39,6 +40,13 @@ class _DokumenClientState extends State<DokumenClient> {
     // print('ININI : ${itemenu.length}');
     return SafeArea(
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => DokumenDetail(isEdit:false)));
+          },
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         appBar: const CustomAppBar(
           judul: 'Dokumen Klien',
         ),
@@ -75,19 +83,24 @@ class _DokumenClientState extends State<DokumenClient> {
                           },
                         ),
                         title: GestureDetector(
-                          child: Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('${state.data[index].namaDokumen}'),
-                                Text(
-                                  '${state.data[index].jenisDok}',
-                                  style: const TextStyle(fontSize: 14),
-                                ),
-                              ],
-                            ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('${state.data[index].namaDokumen}'),
+                              Text(
+                                '${state.data[index].jenisDok}',
+                                style: const TextStyle(fontSize: 14),
+                              ),
+                              // Text(
+                              //   '${state.data[index].jenisDok}',
+                              //   style: const TextStyle(fontSize: 14),
+                              // ),
+                            ],
                           ),
-                          onTap: () {},
+                          onTap: () {
+
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => DokumenDetail(isEdit:true)));
+                          },
                         ),
                         // subtitle: Text('${state.data[index].jenisDok}'),
                         trailing: Row(
@@ -95,7 +108,9 @@ class _DokumenClientState extends State<DokumenClient> {
                           children: [
                             IconButton(
                               icon: const Icon(Icons.delete),
-                              onPressed: (){},
+                              onPressed: (){
+
+                              },
                             ),
                           ],
                         )

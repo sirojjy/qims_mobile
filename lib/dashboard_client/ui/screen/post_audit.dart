@@ -29,7 +29,6 @@ class _PostAuditClientState extends State<PostAuditClient> {
                   titles: 'Sertifikat',
                   descriptions: '',
                 ),
-
               ],
             ),
           ),
