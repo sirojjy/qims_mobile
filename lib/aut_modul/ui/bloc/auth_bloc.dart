@@ -133,7 +133,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             )
         );
       } else{
-        print('INI HASILNYA');
+        // print('INI HASILNYA');
         var url = Uri.parse(ApiConstant.authentication);
         var request = await http.post(
             url,

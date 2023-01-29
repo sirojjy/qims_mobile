@@ -68,57 +68,7 @@ class _DashboardClientState extends State<DashboardClient> {
                   padding: const EdgeInsets.only(left: 10, right: 10),
                   child: Column(
                     children: [
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children:  [
-                          CustomContainer(
-                            color1: Color(0xff1AF0AC),
-                            color2: Color(0xff11B9AF),
-                            icon: Icons.check_box,
-                            text1: '${state.jml_sertifikat}',
-                            text2: 'Sertifikat Aktif',
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          CustomContainer(
-                            color1: Color(0xff52E5E7),
-                            color2: Color(0xff108CFF),
-                            icon: Icons.calendar_month,
-                            text1: '${state.telah_dijadwalkan}',
-                            text2: 'Kegiatan Dijadwalkan',
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children:  [
-                          CustomContainer(
-                            color1: Color(0xffFCCF31),
-                            color2: Color(0xffF55555),
-                            icon: Icons.schedule_sharp,
-                            text1: '${state.dijadwalkan}',
-                            text2: 'Jadwal Akan Datang',
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          CustomContainer(
-                            color1: Color(0xffF761A1),
-                            color2: Color(0xff8C1BAB),
-                            icon: Icons.done_all,
-                            text1: '${state.selesai}',
-                            text2: 'Kegiatan Selesai',
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      const SizedBox(height: 10,),
 
                       //PROFIL KLIEN
                       Container(
@@ -193,6 +143,56 @@ class _DashboardClientState extends State<DashboardClient> {
                         ),
                       ),
                       //PROFIL KLIEN END
+
+                      const SizedBox(height: 10,),
+                      Row(
+                        children:  [
+                          CustomContainer(
+                            color1: Color(0xff1AF0AC),
+                            color2: Color(0xff11B9AF),
+                            icon: Icons.check_box,
+                            text1: '${state.jml_sertifikat}',
+                            text2: 'Sertifikat Aktif',
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          CustomContainer(
+                            color1: Color(0xff52E5E7),
+                            color2: Color(0xff108CFF),
+                            icon: Icons.calendar_month,
+                            text1: '${state.telah_dijadwalkan}',
+                            text2: 'Kegiatan Dijadwalkan',
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children:  [
+                          CustomContainer(
+                            color1: Color(0xffFCCF31),
+                            color2: Color(0xffF55555),
+                            icon: Icons.schedule_sharp,
+                            text1: '${state.dijadwalkan}',
+                            text2: 'Jadwal Akan Datang',
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          CustomContainer(
+                            color1: Color(0xffF761A1),
+                            color2: Color(0xff8C1BAB),
+                            icon: Icons.done_all,
+                            text1: '${state.selesai}',
+                            text2: 'Kegiatan Selesai',
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
 
                       const SizedBox(
                         height: 10,
