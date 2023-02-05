@@ -22,5 +22,7 @@ class OnDokumenTambah extends DokumenEvent {
   final String? jenis_dok;
   final File? file;
 
-  OnDokumenTambah(this.nama_dok, this.jenis_dok, this.file);
+  OnDokumenTambah({this.nama_dok, this.jenis_dok, this.file});
 }
+
+class OnDokumenResetStatus extends DokumenEvent {}

@@ -19,6 +19,10 @@ class DokumenBloc extends Bloc<DokumenEvent, DokumenState> {
   DokumenBloc() : super(DokumenState(data: [])) {
     on<OnDokumenView>(_validateToDokumen);
     on<OnDokumenTambah>(_validateAddDokumen);
+    on<OnDokumenResetStatus>((event, emit) {
+      print('NYAMPAI SINI');
+      emit(state.copyWith(isSucess: null, message: null));
+    });
   }
 
   ///BLOC View Data
@@ -79,47 +83,97 @@ class DokumenBloc extends Bloc<DokumenEvent, DokumenState> {
   FutureOr<void> _validateAddDokumen(OnDokumenTambah event, Emitter<DokumenState> emit) async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-      try {
-        if(event.nama_dok == '' && event.jenis_dok == '' && event.file == ''){
-          state.copyWith(
-            status: DokumenStateStatus.error,
-            message: 'Silahkan isi data terlebih dahulu',
-          );
-        } else {
-          var url = Uri.parse(ApiConstant.actDokCenter);
-          var request = await http.post(
-            url,
-            body: {
-              'nama_dok' : event.nama_dok,
-              'jenis_dok' : event.jenis_dok,
-              'file' : event.file,
-            }
-          );
+    if(event.nama_dok == null || event.nama_dok == '') {
+      print('KONDISI 1');
+      emit (state.copyWith(message: 'Mohon isi form dengan benar'));
+      ///reset status message
+    }else{
+      print('KONDISI 2');
+      ///handle file
+      var request = http.MultipartRequest(
+          'POST',
+          Uri.parse(ApiConstant.actDokCenter));
 
-          ///balikan
-          var response = jsonDecode(request.body);
-          print('INI HASILNYA : $response');
-          if(response['status'] == 'gagal' ){
-            emit(
-              state.copyWith(
-                message: response['error_msg'],
-                status: DokumenStateStatus.error,
-              )
-            );
-          } else {
-            emit(
-              state.copyWith(
-                status: DokumenStateStatus.success,
-              )
-            );
-          }
-        }
-      } catch(error, stacktrace){
+      request.fields['id_klien'] = '${prefs.getString('id_klien')}';
+      request.fields['nama_dok'] = '${event.nama_dok}';
+      request.fields['jenis_dok'] = '${event.jenis_dok}';
+
+      http.MultipartFile multipartFile = await http.MultipartFile.fromPath(
+          'file', '${event.file?.path}');
+
+      request.files.add(multipartFile);
+
+      http.StreamedResponse response = await request.send();
+      //     http.MultipartFile.fro(
+      //     'file',
+      //     event.file,
+      //     contentType: new MediaType('image', 'jpeg')
+      // ))
+
+      // var response = await request.send();
+      // var responsed = await http.Response.fromStream(response);
+      // final responseData = jsonDecode(response.);
+      if (response.statusCode==200) {
+        print('Sukses');
         emit(
-          state.copyWith(
-            status: DokumenStateStatus.error
-          )
+            state.copyWith(
+              isSucess: true,
+            )
         );
       }
+      else {
+        print('Gagal');
+        emit(
+            state.copyWith(
+              isSucess: false,
+            )
+        );
+      }
+    }
+
+
+      //
+      // try {
+      //   if(event.nama_dok == '' && event.jenis_dok == '' && event.file == ''){
+      //     state.copyWith(
+      //       status: DokumenStateStatus.error,
+      //       message: 'Silahkan isi data terlebih dahulu',
+      //     );
+      //   } else {
+      //     var url = Uri.parse(ApiConstant.actDokCenter);
+      //     var request = await http.post(
+      //       url,
+      //       body: {
+      //         'nama_dok' : event.nama_dok,
+      //         'jenis_dok' : event.jenis_dok,
+      //         'file' : event.file,
+      //       }
+      //     );
+      //
+      //     ///respon
+      //     var response = jsonDecode(request.body);
+      //     print('INI HASILNYA : $response');
+      //     if(response['status'] == 'gagal' ){
+      //       emit(
+      //         state.copyWith(
+      //           message: response['error_msg'],
+      //           status: DokumenStateStatus.error,
+      //         )
+      //       );
+      //     } else {
+      //       emit(
+      //         state.copyWith(
+      //           status: DokumenStateStatus.success,
+      //         )
+      //       );
+      //     }
+      //   }
+      // } catch(error, stacktrace){
+      //   emit(
+      //     state.copyWith(
+      //       status: DokumenStateStatus.error
+      //     )
+      //   );
+      // }
   }
 }

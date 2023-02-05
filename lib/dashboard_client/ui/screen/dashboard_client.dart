@@ -70,7 +70,7 @@ class _DashboardClientState extends State<DashboardClient> {
                     children: [
                       const SizedBox(height: 10,),
 
-                      //PROFIL KLIEN
+                      ///PROFIL KLIEN
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                         decoration: BoxDecoration(
@@ -84,63 +84,60 @@ class _DashboardClientState extends State<DashboardClient> {
                           ),
                           ],
                         ),
-                        child: Table(
-                          // border: TableBorder.all(),
-                          columnWidths: <int, TableColumnWidth>{
-                            0 : IntrinsicColumnWidth(),
-                            1 : FlexColumnWidth(),
-                          },
-                          children: <TableRow>[
-                            TableRow(
-                                children: [
-                                  Container(
-                                    height: 30,
-                                    child: SizedBox.shrink(),
-                                  ),
-                                  Container(
-                                    height: 30,
-                                    child: Text(': ${state.nama_klien}' ?? '',
-                                      style: TextStyle(fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                ]
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 30,
+                              child: Text('${state.nama_klien}' ?? '',
+                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                              ),
                             ),
-                            TableRow(
-                                children: [
-                                  Container(
-                                    height: 30,
-                                    child: Text('Alamat '),
-                                  ),
-                                  Container(
-                                    height: 30,
-                                    child: Text(': ${state.alamat}' ?? ''),
-                                  ),
-                                ]
-                            ),
-                            TableRow(
-                                children: [
-                                  Container(
-                                    height: 30,
-                                    child: Text('PIC '),
-                                  ),
-                                  Container(
-                                    height: 30,
-                                    child: Text(': ${state.nama_cp}' ?? ''),
-                                  ),
-                                ]
-                            ),
-                            TableRow(
-                                children: [
-                                  Container(
-                                    height: 30,
-                                    child: Text('Kontak '),
-                                  ),
-                                  Container(
-                                    height: 30,
-                                    child: Text(': ${state.no_hp}' ?? ''),
-                                  ),
-                                ]
-                            ),
+                            Table(
+                              // border: TableBorder.all(),
+                              columnWidths: <int, TableColumnWidth>{
+                                0 : IntrinsicColumnWidth(),
+                                1 : FlexColumnWidth(),
+                              },
+                              children: <TableRow>[
+
+                                TableRow(
+                                    children: [
+                                      Container(
+                                        height: 30,
+                                        child: Text('Alamat '),
+                                      ),
+                                      Container(
+                                        height: 30,
+                                        child: Text(': ${state.alamat}' ?? ''),
+                                      ),
+                                    ]
+                                ),
+                                TableRow(
+                                    children: [
+                                      Container(
+                                        height: 30,
+                                        child: Text('PIC '),
+                                      ),
+                                      Container(
+                                        height: 30,
+                                        child: Text(': ${state.nama_cp}' ?? ''),
+                                      ),
+                                    ]
+                                ),
+                                TableRow(
+                                    children: [
+                                      Container(
+                                        height: 30,
+                                        child: Text('Kontak '),
+                                      ),
+                                      Container(
+                                        height: 30,
+                                        child: Text(': ${state.no_hp}' ?? ''),
+                                      ),
+                                    ]
+                                ),
+                              ],
+                            )
                           ],
                         ),
                       ),
