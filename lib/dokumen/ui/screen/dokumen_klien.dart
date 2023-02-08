@@ -19,11 +19,11 @@ class DokumenClient extends StatefulWidget {
 
 
 class _DokumenClientState extends State<DokumenClient> {
-  final List<String> judul_doc = ['Manual ISO 9001:2015', 'SOP', 'Lampiran', 'Kebijakan Mutu'];
-  final List<String> jenis_doc = ['Manual', 'SOP', 'Dokumen Lainnya'];
+  // final List<String> judul_doc = ['Manual ISO 9001:2015', 'SOP', 'Lampiran', 'Kebijakan Mutu'];
+  // final List<String> jenis_doc = ['Manual', 'SOP', 'Dokumen Lainnya'];
   SharedPreferences? pref;
 
-  //PDF Viewer
+  ///PDF Viewer
   final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
 
   @override
@@ -37,13 +37,13 @@ class _DokumenClientState extends State<DokumenClient> {
 
   @override
   Widget build(BuildContext context) {
-    // print('ININI : ${itemenu.length}');
+    // print('INI : ${itemenu.length}');
     return SafeArea(
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => DokumenDetail(isEdit:false)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => DokumenDetail( isEdit: true,)));
           },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -60,7 +60,6 @@ class _DokumenClientState extends State<DokumenClient> {
                 itemCount: state.data.length,
                 itemBuilder: (context, index) {
                   return Card(
-
                     child: ListTile(
                         leading: GestureDetector(
                           child: Icon(Icons.file_open_outlined),
@@ -98,8 +97,7 @@ class _DokumenClientState extends State<DokumenClient> {
                             ],
                           ),
                           onTap: () {
-
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => DokumenDetail(isEdit:true)));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => DokumenDetail(isEdit:false)));
                           },
                         ),
                         // subtitle: Text('${state.data[index].jenisDok}'),

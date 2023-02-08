@@ -5,8 +5,6 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
-import 'package:qims_mobile/dashboard_client/ui/bloc/dashboard_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:qims_mobile/dokumen/model/dokumen_model.dart';
 import 'package:qims_mobile/share/api_constant.dart';
@@ -53,7 +51,6 @@ class DokumenBloc extends Bloc<DokumenEvent, DokumenState> {
             fileDok: 'http://123.100.226.123:3010/file_uploads/dok_center/${response[i]['file_dok']}'
           ));
         }
-
 
         ///CEK Perulangan
         // for(int i=0; i<data.length; i++){
