@@ -7,6 +7,7 @@ import 'package:qims_mobile/dashboard_client/ui/screen/dashboard_client.dart';
 import 'package:qims_mobile/dokumen/ui/bloc/dokumen_bloc.dart';
 import 'package:qims_mobile/dokumen/ui/screen/dokumen_klien.dart';
 import 'package:qims_mobile/dashboard_client/ui/screen/post_audit.dart';
+import 'package:qims_mobile/pra_audit_client/ui/bloc/pra_audit_bloc.dart';
 import 'package:qims_mobile/pra_audit_client/ui/screen/pra_audit_client.dart';
 import 'package:qims_mobile/dashboard_client/ui/screen/profil_client.dart';
 import 'package:qims_mobile/share/custom_routes.dart';
@@ -22,6 +23,7 @@ void main() {
           BlocProvider(create: (BuildContext context) => AuthBloc()),
           BlocProvider(create: (BuildContext context) => DashboardBloc()),
           BlocProvider(create: (BuildContext context) => DokumenBloc()),
+          BlocProvider(create: (BuildContext context) => PraAuditBloc()),
         ],
         child: const MyApp(),
       )

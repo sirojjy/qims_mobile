@@ -43,7 +43,7 @@ class _DokumenClientState extends State<DokumenClient> {
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => DokumenDetail( isEdit: true,)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => DokumenDetail( isEdit: false,)));
           },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -69,7 +69,6 @@ class _DokumenClientState extends State<DokumenClient> {
                                 builder: (context) {
                                   return Dialog(
                                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                                    // elevation: 16,
                                     child: Container(
                                       child: SfPdfViewer.network(
                                         '${state.data[index].fileDok}',
@@ -97,7 +96,7 @@ class _DokumenClientState extends State<DokumenClient> {
                             ],
                           ),
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => DokumenDetail(isEdit:false)));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => DokumenDetail(isEdit:true, itemDokumen:state.data[index])));
                           },
                         ),
                         // subtitle: Text('${state.data[index].jenisDok}'),

@@ -17,6 +17,7 @@ class DokumenBloc extends Bloc<DokumenEvent, DokumenState> {
   DokumenBloc() : super(DokumenState(data: [])) {
     on<OnDokumenView>(_validateToDokumen);
     on<OnDokumenTambah>(_validateAddDokumen);
+    on<OnDokumenEdit>(_validateEditDokumen);
     on<OnDokumenResetStatus>((event, emit) {
       print('NYAMPAI SINI');
       emit(state.copyWith(isSucess: null, message: null));
@@ -45,7 +46,9 @@ class DokumenBloc extends Bloc<DokumenEvent, DokumenState> {
       var response = jsonDecode(request.body);
       //   print('NDENE RA SIH? 2');
         for(int i=0; i<response.length; i++){
+          // print('INI COK : ${response[i]['id_dok_center']}');
           data.add(DokumenModel(
+            idDokumen: response[i]['id_dok_center'],
             namaDokumen: response[i]['nama_dok'],
             jenisDok: response[i]['jenis_dok'] == '0' ? 'Manual' : response[i]['jenis_dok'] == '1' ? 'Prosedur' : 'Lainya',
             fileDok: 'http://123.100.226.123:3010/file_uploads/dok_center/${response[i]['file_dok']}'
@@ -127,50 +130,73 @@ class DokumenBloc extends Bloc<DokumenEvent, DokumenState> {
         );
       }
     }
-
-
-      //
-      // try {
-      //   if(event.nama_dok == '' && event.jenis_dok == '' && event.file == ''){
-      //     state.copyWith(
-      //       status: DokumenStateStatus.error,
-      //       message: 'Silahkan isi data terlebih dahulu',
-      //     );
-      //   } else {
-      //     var url = Uri.parse(ApiConstant.actDokCenter);
-      //     var request = await http.post(
-      //       url,
-      //       body: {
-      //         'nama_dok' : event.nama_dok,
-      //         'jenis_dok' : event.jenis_dok,
-      //         'file' : event.file,
-      //       }
-      //     );
-      //
-      //     ///respon
-      //     var response = jsonDecode(request.body);
-      //     print('INI HASILNYA : $response');
-      //     if(response['status'] == 'gagal' ){
-      //       emit(
-      //         state.copyWith(
-      //           message: response['error_msg'],
-      //           status: DokumenStateStatus.error,
-      //         )
-      //       );
-      //     } else {
-      //       emit(
-      //         state.copyWith(
-      //           status: DokumenStateStatus.success,
-      //         )
-      //       );
-      //     }
-      //   }
-      // } catch(error, stacktrace){
-      //   emit(
-      //     state.copyWith(
-      //       status: DokumenStateStatus.error
-      //     )
-      //   );
-      // }
   }
+
+  ///Edit
+  FutureOr<void> _validateEditDokumen(OnDokumenEdit event, Emitter<DokumenState> emit) async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+     try{
+       ///handle file
+       if(event.file != null){
+         var request = http.MultipartRequest(
+             'POST',
+             /// UBAH API CONSTANT KE EDIT
+             Uri.parse(ApiConstant.editDokCenter));
+
+         request.fields['id_dok_center'] = '${event.idDokumen}';
+         request.fields['id_klien'] = '${prefs.getString('id_klien')}';
+         request.fields['nama_dok'] = '${event.nama_dok}';
+         request.fields['jenis_dok'] = '${event.jenis_dok}';
+
+         /// CEK FILENYA ADA ATAU ENGGAK
+         if(event.file != null) {
+           http.MultipartFile multipartFile = await http.MultipartFile.fromPath(
+               'file', '${event.file?.path}');
+           request.files.add(multipartFile);
+         }
+
+         /// EKSEKUSI SEMUA PERSIAPAN DIATAS
+         var response = await request.send();
+
+         /// INI RESPONSNYA
+         if (response.statusCode==200) {
+           print('Sukses ${response.statusCode}');
+           emit(
+               state.copyWith(
+                 isSucess: true,
+               )
+           );
+         }
+         else {
+           print('Gagal');
+           emit(
+               state.copyWith(
+                 isSucess: false,
+               )
+           );
+         }
+       }
+       else{
+         var url = Uri.parse(ApiConstant.editDokCenter);
+         var request = await http.post(
+             url,
+             body: {
+                'id_dok_center' : '${event.idDokumen}',
+                'nama_dok' : '${event.nama_dok}',
+                'jenis_dok' : '${event.jenis_dok}'
+             }
+         );
+
+         var response = jsonDecode(request.body);
+
+         print('SUKSES GAK ${jsonDecode(response.body)}');
+
+       }
+
+     }catch (e){
+       print('ERROR NI BOSS : $e');
+     }
+  }
+
 }

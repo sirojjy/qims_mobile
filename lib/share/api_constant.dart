@@ -4,5 +4,6 @@ class ApiConstant{
   static String klien = '$baseUrl/klien';
   static String viewDokCenter = '$baseUrl/view_dok_center';
   static String actDokCenter = '$baseUrl/act_dok_center';
+  static String editDokCenter = '$baseUrl/act_update_dok_center';
   static String viewRencanaAudit = '$baseUrl/rencana_audit';
 }

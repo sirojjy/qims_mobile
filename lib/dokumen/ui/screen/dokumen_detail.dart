@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qims_mobile/dokumen/model/dokumen_model.dart';
 import 'package:qims_mobile/dokumen/ui/bloc/dokumen_bloc.dart';
 import 'package:qims_mobile/share/custom_appbar.dart';
 
@@ -10,20 +11,21 @@ import '../../../share/custom_routes.dart';
 
 class DokumenDetail extends StatefulWidget {
   final bool isEdit;
-  DokumenDetail({Key? key, required this.isEdit}) : super(key: key);
+  final DokumenModel? itemDokumen;
+  DokumenDetail({Key? key, required this.isEdit,  this.itemDokumen }) : super(key: key);
 
 
   @override
   State<DokumenDetail> createState() => _DokumenDetailState();
 }
-List<String> jenisDok = <String>['Form Registrasi','Manual', 'SOP', 'Dokumen Lainnya'];
+var jenisDok = <String>['Form Registrasi','Manual', 'SOP', 'Dokumen Lainnya'];
 
 class _DokumenDetailState extends State<DokumenDetail> {
   var namaDokController = TextEditingController();
   var jenisDokController = TextEditingController();
   var fileDokController = TextEditingController();
   String errorMessage = '';
-  String dropDownValue = jenisDok.first;
+  String? dropDownValue;
   int? dropDownApi;
   String? pathFile;
 
@@ -31,11 +33,32 @@ class _DokumenDetailState extends State<DokumenDetail> {
   void initState() {
     BlocProvider.of<DokumenBloc>(context);
     super.initState();
+    namaDokController= TextEditingController(text: widget.itemDokumen?.namaDokumen);
+    print('Dropdown ${widget.itemDokumen?.jenisDok}');
+    if(widget.itemDokumen?.jenisDok != null){
+      if(widget.itemDokumen?.jenisDok == 'Form Registrasi'){
+        dropDownValue = jenisDok[0];
+        dropDownApi = 0;
+      }else if(widget.itemDokumen?.jenisDok == 'Manual'){
+        dropDownValue = jenisDok[1];
+        dropDownApi = 1;
+      }else if(widget.itemDokumen?.jenisDok == 'Prosedur'){
+        dropDownValue = jenisDok[2];
+        dropDownApi = 2;
+      }else{
+        dropDownValue = jenisDok[3];
+        dropDownApi = 3;
+      }
+    }
+
+    print('id: ${widget.itemDokumen?.idDokumen}');
+
   }
 
 
   @override
   Widget build(BuildContext context) {
+    print('INI LHO : $dropDownValue');
     return BlocConsumer<DokumenBloc, DokumenState>(
       listener: (context, state){
         ///Reset IsSussess
@@ -67,7 +90,7 @@ class _DokumenDetailState extends State<DokumenDetail> {
                 TextFormField(
                   controller: namaDokController,
                   decoration: const InputDecoration(
-                      labelText: 'Nama Dokumen'
+                      labelText: 'Nama Dokumen',
                   ),
                 ),
                 const SizedBox(height: 20,),
@@ -79,15 +102,15 @@ class _DokumenDetailState extends State<DokumenDetail> {
                     // This is called when the user selects an item.
                     setState(() {
                       dropDownValue = value!;
-                      if (value == 'Manual') {
+                      if (value == 'Form Registrasi') {
                         dropDownApi = 0;
-                      } else if (value == 'SOP') {
+                      } else if (value == 'Manual') {
                         dropDownApi = 1;
-                      } else if (value == 'Dokumen Lainnya') {
+                      } else if (value == 'SOP') {
                         dropDownApi = 2;
-                      } else {
+                      } else if (value == 'Dokumen Lainnya') {
                         dropDownApi = 3;
-                      };
+                      }
                     });
                   },
                   items: jenisDok.map<DropdownMenuItem<String>>((String value){
@@ -121,7 +144,7 @@ class _DokumenDetailState extends State<DokumenDetail> {
                 const SizedBox(height: 40,),
                 ElevatedButton(
                     onPressed: () {
-
+                      BlocProvider.of<DokumenBloc>(context).add(OnDokumenEdit(widget.itemDokumen?.idDokumen, namaDokController.text, '$dropDownApi', pathFile != null ? File('$pathFile') : null));
                     },
                     child: const Text(
                       'Simpan',

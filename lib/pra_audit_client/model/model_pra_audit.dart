@@ -4,5 +4,10 @@ class PraAuditModel {
   final String? tanggal;
   final String? dokFile;
 
-  PraAuditModel(this.namaKlien, this.nomorSurat, this.tanggal, this.dokFile, {required namaKlien});
+  PraAuditModel({
+    this.namaKlien,
+    this.nomorSurat,
+    this.tanggal,
+    this.dokFile,
+  });
 }
