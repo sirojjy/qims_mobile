@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qims_mobile/aut_modul/ui/screen/login.dart';
 import 'package:qims_mobile/aut_modul/ui/screen/register.dart';
 import 'package:qims_mobile/dashboard_client/ui/bloc/dashboard_bloc.dart';
-import 'package:qims_mobile/dashboard_client/ui/screen/audit_client.dart';
+import 'package:qims_mobile/audit_klien/ui/screen/audit_client.dart';
 import 'package:qims_mobile/dashboard_client/ui/screen/dashboard_client.dart';
 import 'package:qims_mobile/dokumen/ui/bloc/dokumen_bloc.dart';
 import 'package:qims_mobile/dokumen/ui/screen/dokumen_klien.dart';

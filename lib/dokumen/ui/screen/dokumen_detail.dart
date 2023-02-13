@@ -64,10 +64,10 @@ class _DokumenDetailState extends State<DokumenDetail> {
         ///Reset IsSussess
         if(state.isSucess != null){
           if(state.isSucess!){
-            print('HALOO 1 ${state.isSucess}');
+            // print('HALOO 1 ${state.isSucess}');
             // BlocProvider.of<DokumenBloc>(context).add(OnDokumenResetStatus());
-            // Navigator.pushNamed(context, CustomRoutes.dokumenClient);
-            Navigator.pop(context);
+            Navigator.pushNamed(context, CustomRoutes.dokumenClient);
+            // Navigator.pop(context);
           }else{
             print('HALOO 2 ${state.isSucess}');
           }

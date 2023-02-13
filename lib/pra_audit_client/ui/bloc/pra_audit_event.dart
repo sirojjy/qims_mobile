@@ -8,3 +8,10 @@ class PraAuditEvent extends Equatable{
 class OnPraAuditView extends PraAuditEvent{
 
 }
+class OnViewJadwalAudit extends PraAuditEvent{
+
+}
+class OnViewSuratTugas extends PraAuditEvent{
+
+}
+
