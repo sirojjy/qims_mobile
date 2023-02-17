@@ -36,8 +36,6 @@ class _PraAuditClientState extends State<PraAuditClient> {
 
   @override
   Widget build(BuildContext context) {
-
-
     return SafeArea(
         child: Scaffold(
           appBar: const CustomAppBar(
@@ -52,7 +50,6 @@ class _PraAuditClientState extends State<PraAuditClient> {
                   padding: EdgeInsets.only(left: 10, right: 10),
                   child: Column(
                     children: [
-
                       ///JADWAL AUDIT
                       const SizedBox(height: 10,),
                       Card(

@@ -1,10 +1,10 @@
 import 'package:circular_bottom_navigation/circular_bottom_navigation.dart';
 import 'package:circular_bottom_navigation/tab_item.dart';
 import 'package:flutter/material.dart';
-import 'package:qims_mobile/audit_klien/ui/screen/audit_client.dart';
+import 'package:qims_mobile/audit_klien/ui/screen/audit_klien.dart';
 import 'package:qims_mobile/dashboard_client/ui/screen/dashboard_client.dart';
 import 'package:qims_mobile/dokumen/ui/screen/dokumen_klien.dart';
-import 'package:qims_mobile/dashboard_client/ui/screen/post_audit.dart';
+import 'package:qims_mobile/post_audit_klien/ui/screen/post_audit.dart';
 import 'package:qims_mobile/pra_audit_client/ui/screen/pra_audit_client.dart';
 
 class BottomMenu extends StatefulWidget {
@@ -77,7 +77,7 @@ class _MenuState extends State<BottomMenu> {
       case 1:
         return PraAuditClient();
       case 2:
-        return AuditClient();
+        return AuditKlien();
       case 3:
         return PostAuditClient();
       case 4:

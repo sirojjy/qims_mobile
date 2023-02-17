@@ -14,7 +14,7 @@ class PraAuditBloc extends Bloc<PraAuditEvent, PraAuditState> {
   PraAuditBloc() : super(PraAuditState(
     data: [],
     dataJadwalAudit: [],
-      dataSuratTugas: [],
+    dataSuratTugas: [],
   )) {
     on<OnPraAuditView>(_praAuditView);
     on<OnViewJadwalAudit>(_viewJadwalAudit);
