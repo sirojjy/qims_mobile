@@ -15,7 +15,7 @@ class PostAuditBloc extends Bloc<PostAuditEvent, PostAuditState> {
   PostAuditBloc() : super(PostAuditState(
       dataSertifikat: []
   )) {
-    on<PostAuditEvent>(_viewPostAudit});
+    on<PostAuditEvent>(_viewPostAudit);
   }
 
   FutureOr<void> _viewPostAudit(PostAuditEvent event, Emitter<PostAuditState> emit) async{
@@ -43,11 +43,25 @@ class PostAuditBloc extends Bloc<PostAuditEvent, PostAuditState> {
       dataSertifikat.add(SertifikatModel(
           namaKlien: response[i]['nama_klien'],
           namaIso: response[i]['nama_iso'],
-          tglAudit: response[i][''],
-          idSertifikat,
-          idDetailDok,
-          fileDaftarHadir
-      ))
-    }
-  }
+          noSertifikat: response[i]['no_sertifikat'],
+          tglTerbit: response[i]['tgl_terbit'],
+          tglReassessment: response[i]['tgl_reass'],
+          tglExpired: response[i]['2023-11-06'],
+          fileSertifikat: response[i]['dok_file'],
+
+      ));
+    } emit (
+        state.copyWith(
+          status: PostAuditStateStatus.success,
+          dataSertifikat: dataSertifikat,
+        )
+    );
+  } catch (error){
+    print('Jajal $error');
+    emit(
+        state.copyWith(
+          status: PostAuditStateStatus.error,
+        )
+    );
+  }}
 }

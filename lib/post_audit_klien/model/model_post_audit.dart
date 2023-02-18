@@ -7,7 +7,7 @@ class SertifikatModel {
   final String? tglTerbit;
   final String? tglReassessment;
   final String? tglExpired;
-  final String? fileDaftarHadir;
+  final String? fileSertifikat;
 
   SertifikatModel( {
     this.namaKlien,
@@ -18,6 +18,6 @@ class SertifikatModel {
     this.tglTerbit,
     this.tglReassessment,
     this.tglExpired,
-    this.fileDaftarHadir
+    this.fileSertifikat
   });
 }
