@@ -1,4 +1,8 @@
 part of 'post_audit_bloc.dart';
 
-@immutable
-abstract class PostAuditEvent {}
+class PostAuditEvent extends Equatable {
+  @override
+  List<Object> get props => [];
+}
+
+class OnViewSertifikat extends PostAuditEvent{}

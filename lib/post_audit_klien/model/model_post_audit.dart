@@ -9,7 +9,7 @@ class SertifikatModel {
   final String? tglExpired;
   final String? fileSertifikat;
 
-  SertifikatModel( {
+  SertifikatModel({
     this.namaKlien,
     this.namaIso,
     this.idSertifikat,
