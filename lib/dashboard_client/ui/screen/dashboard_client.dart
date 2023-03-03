@@ -89,12 +89,12 @@ class _DashboardClientState extends State<DashboardClient> {
                             SizedBox(
                               height: 30,
                               child: Text('${state.nama_klien}' ?? '',
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                               ),
                             ),
                             Table(
                               // border: TableBorder.all(),
-                              columnWidths: <int, TableColumnWidth>{
+                              columnWidths: const <int, TableColumnWidth>{
                                 0 : IntrinsicColumnWidth(),
                                 1 : FlexColumnWidth(),
                               },
@@ -104,7 +104,7 @@ class _DashboardClientState extends State<DashboardClient> {
                                     children: [
                                       Container(
                                         height: 30,
-                                        child: Text('Alamat '),
+                                        child: const Text('Alamat '),
                                       ),
                                       Container(
                                         height: 30,
@@ -116,7 +116,7 @@ class _DashboardClientState extends State<DashboardClient> {
                                     children: [
                                       Container(
                                         height: 30,
-                                        child: Text('PIC '),
+                                        child: const Text('PIC '),
                                       ),
                                       Container(
                                         height: 30,
@@ -128,7 +128,7 @@ class _DashboardClientState extends State<DashboardClient> {
                                     children: [
                                       Container(
                                         height: 30,
-                                        child: Text('Kontak '),
+                                        child: const Text('Kontak '),
                                       ),
                                       Container(
                                         height: 30,
@@ -147,18 +147,18 @@ class _DashboardClientState extends State<DashboardClient> {
                       Row(
                         children:  [
                           CustomContainer(
-                            color1: Color(0xff1AF0AC),
-                            color2: Color(0xff11B9AF),
+                            color1: const Color(0xff1AF0AC),
+                            color2: const Color(0xff11B9AF),
                             icon: Icons.check_box,
                             text1: '${state.jml_sertifikat}',
                             text2: 'Sertifikat Aktif',
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           CustomContainer(
-                            color1: Color(0xff52E5E7),
-                            color2: Color(0xff108CFF),
+                            color1: const Color(0xff52E5E7),
+                            color2: const Color(0xff108CFF),
                             icon: Icons.calendar_month,
                             text1: '${state.telah_dijadwalkan}',
                             text2: 'Kegiatan Dijadwalkan',
@@ -171,18 +171,18 @@ class _DashboardClientState extends State<DashboardClient> {
                       Row(
                         children:  [
                           CustomContainer(
-                            color1: Color(0xffFCCF31),
-                            color2: Color(0xffF55555),
+                            color1: const Color(0xffFCCF31),
+                            color2: const Color(0xffF55555),
                             icon: Icons.schedule_sharp,
                             text1: '${state.dijadwalkan}',
                             text2: 'Jadwal Akan Datang',
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           CustomContainer(
-                            color1: Color(0xffF761A1),
-                            color2: Color(0xff8C1BAB),
+                            color1: const Color(0xffF761A1),
+                            color2: const Color(0xff8C1BAB),
                             icon: Icons.done_all,
                             text1: '${state.selesai}',
                             text2: 'Kegiatan Selesai',
@@ -218,18 +218,18 @@ class _DashboardClientState extends State<DashboardClient> {
                               Flexible(
                                 child: Column(
                                   children: [
-                                    Text('Sertifikat', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),), SizedBox(height: 10),
-                                    Text('ISO ${state.nama_iso}'), SizedBox(height: 10),
-                                    Text('ID ${state.no_reg}'), SizedBox(height: 10),
-                                    Text('Scope ${state.scope}'), SizedBox(height: 10),
-                                    Text('Surveillance ${state.tgl_asses}'), SizedBox(height: 10),
-                                    Text('Expired ${state.tgl_expire}'), SizedBox(height: 10),
+                                    const Text('Sertifikat', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),), const SizedBox(height: 10),
+                                    Text('ISO ${state.nama_iso}'), const SizedBox(height: 10),
+                                    Text('ID ${state.no_reg}'), const SizedBox(height: 10),
+                                    Text('Scope ${state.scope}'), const SizedBox(height: 10),
+                                    Text('Surveillance ${state.tgl_asses}'), const SizedBox(height: 10),
+                                    Text('Expired ${state.tgl_expire}'), const SizedBox(height: 10),
                                     ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                           padding: EdgeInsets.zero,
                                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
                                         ),
-                                        child: Padding(
+                                        child: const Padding(
                                           padding: EdgeInsets.only(
                                               left: 30, right: 30),
                                           child: Text('File Sertifikat'),
