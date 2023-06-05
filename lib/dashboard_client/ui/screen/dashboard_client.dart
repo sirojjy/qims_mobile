@@ -25,10 +25,6 @@ class _DashboardClientState extends State<DashboardClient> {
   SharedPreferences? pref;
   var namaKlien;
 
-
-
-  StepperType _type = StepperType.vertical;
-
   List<StepperModel> tuples = [
     StepperModel(Icons.directions_bike, 'Tahun 1', '08-09-2022'),
     StepperModel(Icons.directions_bus, 'Tahun 1', '08-09-2022'),
@@ -37,8 +33,6 @@ class _DashboardClientState extends State<DashboardClient> {
     StepperModel(Icons.directions_car, 'Tahun 1', '08-09-2022'),
   ];
 
-  int _index = 0;
-  
   @override
   void initState() {
     BlocProvider.of<DashboardBloc>(context).add(OnDashboardEvent());
@@ -51,8 +45,6 @@ class _DashboardClientState extends State<DashboardClient> {
     pref = await SharedPreferences.getInstance();
 
     setState(() {
-      // namaKlien = pref!.getString('nama');
-      // alamat = pref!.getString('alamat');
     });
   }
 
@@ -60,7 +52,7 @@ class _DashboardClientState extends State<DashboardClient> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: const CustomAppBar(judul: 'Dashboard'),
+          appBar:  CustomAppBar(judul: 'Dashboard'),
           body: SingleChildScrollView(
             child: BlocBuilder<DashboardBloc, DashboardState> (
               builder: (context, state) {
