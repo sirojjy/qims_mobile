@@ -8,3 +8,9 @@ class DashboardEvent extends Equatable {
 class OnDashboardEvent extends DashboardEvent {
 
 }
+class OnNotificationEvent extends DashboardEvent {
+ final String? tglAsses;
+ OnNotificationEvent(this.tglAsses);
+ @override
+  List<Object?> get props => [tglAsses];
+}

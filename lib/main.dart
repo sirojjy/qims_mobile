@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:qims_mobile/audit_klien/ui/bloc/audit_klien_bloc.dart';
 import 'package:qims_mobile/aut_modul/ui/screen/login.dart';
 import 'package:qims_mobile/aut_modul/ui/screen/register.dart';
@@ -18,12 +19,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'aut_modul/ui/bloc/auth_bloc.dart';
 import 'menu/bottom_menu.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  //
+  var flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
   runApp(
       MultiBlocProvider(
         providers: [
           BlocProvider(create: (BuildContext context) => AuthBloc()),
-          BlocProvider(create: (BuildContext context) => DashboardBloc()),
+          BlocProvider(create: (BuildContext context) => DashboardBloc(
+            flutterLocalNotificationsPlugin
+          )),
           BlocProvider(create: (BuildContext context) => DokumenBloc()),
           BlocProvider(create: (BuildContext context) => PraAuditBloc()),
           BlocProvider(create: (BuildContext context) => AuditKlienBloc()),

@@ -17,6 +17,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
 
   DashboardBloc(this.flutterLocalNotificationsPlugin) : super(DashboardState()) {
     on<OnDashboardEvent>(_validateToDashboard);
+    on<OnNotificationEvent>(_handleNotificationEvent);
   }
 
   FutureOr<void> _validateToDashboard(OnDashboardEvent event, Emitter<DashboardState> emit) async{
@@ -73,7 +74,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
               sert: response['cor'][0]['sert'],
             ));
         // Panggil metode scheduleNotification dari DashboardBloc
-        scheduleNotification(response['cor'][0]['tgl_asses']);
+        // scheduleNotification(response['cor'][0]['tgl_asses']);
       }
     } catch(error, stacktrace) {
       emit(state.copyWith(status: DashboardStateStatus.error)
@@ -81,9 +82,13 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     }
   }
 
+  FutureOr<void> _handleNotificationEvent(OnNotificationEvent event, Emitter<DashboardState> emit) {
+    // Panggil metode scheduleNotification dari DashboardBloc
+    scheduleNotification(event.tglAsses!);
+  }
 
   /// Function to schedule notification
-  Future<void> scheduleNotification(String tglAsses) async {
+  FutureOr <void> scheduleNotification(String tglAsses) async {
     print('Tanggal Assessment $tglAsses');
     //mengubah string tglAsses menjadi DateTime
     DateTime tglAssesDate = DateTime.parse(tglAsses);
@@ -134,13 +139,4 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       );
     }
   }
-  // Stream<DashboardState> mapEventToState(DashboardEvent, DashboardState) async* {
-  //   if (event is InitializeDashboard) {
-  //     yield* _mapInitializeDashboardToState();
-  //   }
-  // }
-  // Stream<DashboardState> _mapInitializeDashboardToState() async* {
-  //
-  // }
-
 }

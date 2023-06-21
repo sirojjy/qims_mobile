@@ -36,6 +36,7 @@ class DashboardState extends Equatable {
     this.telah_dijadwalkan,
     this.dijadwalkan,
     this.selesai,
+    this.tglAsses,
 
   });
 
@@ -64,6 +65,7 @@ class DashboardState extends Equatable {
   final String? telah_dijadwalkan;
   final String? dijadwalkan;
   final String? selesai;
+  final String? tglAsses;
 
   @override
   // TODO: implement props
@@ -92,7 +94,7 @@ class DashboardState extends Equatable {
     telah_dijadwalkan,
     dijadwalkan,
     selesai,
-
+    tglAsses,
 
   ];
 
@@ -122,6 +124,7 @@ class DashboardState extends Equatable {
     String? telah_dijadwalkan,
     String? dijadwalkan,
     String? selesai,
+    String? tglAsses,
   }) {
     return DashboardState(
       status: status ?? this.status,
@@ -149,6 +152,7 @@ class DashboardState extends Equatable {
       dijadwalkan: dijadwalkan ?? this.dijadwalkan,
       selesai: selesai ?? this.selesai,
       jml_sertifikat: jml_sertifikat ?? this.jml_sertifikat,
+      tglAsses: tglAsses ?? this.tglAsses,
     );
   }
 }

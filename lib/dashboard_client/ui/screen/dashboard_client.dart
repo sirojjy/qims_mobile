@@ -20,6 +20,8 @@ class DashboardClient extends StatefulWidget {
 class _DashboardClientState extends State<DashboardClient> {
   //PDF Viewer
   final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
+  // final DashboardBloc dashboardBloc;
+  // _DashboardClientState(this.dashboardBloc);
 
   int groupValue = 0;
   
@@ -57,10 +59,10 @@ class _DashboardClientState extends State<DashboardClient> {
           body: SingleChildScrollView(
             child: BlocBuilder<DashboardBloc, DashboardState> (
               builder: (context, state) {
-                //
-                if (state.tgl_asses != null) {
-                  scheduleNotification(state.tgl_asses!);
-                }
+                // dashboardBloc.scheduleNotification(state.tglAsses);
+                // if (state.tgl_asses != null) {
+                //   scheduleNotification(state.tgl_asses!);
+                // }
                 return Container(
                   padding: const EdgeInsets.only(left: 10, right: 10),
                   child: Column(
