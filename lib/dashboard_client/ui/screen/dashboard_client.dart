@@ -8,6 +8,7 @@ import 'package:qims_mobile/share/custom_appbar.dart';
 import 'package:qims_mobile/share/custom_container.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class DashboardClient extends StatefulWidget {
   const DashboardClient({Key? key}) : super(key: key);
@@ -56,6 +57,10 @@ class _DashboardClientState extends State<DashboardClient> {
           body: SingleChildScrollView(
             child: BlocBuilder<DashboardBloc, DashboardState> (
               builder: (context, state) {
+                //
+                if (state.tgl_asses != null) {
+                  scheduleNotification(state.tgl_asses!);
+                }
                 return Container(
                   padding: const EdgeInsets.only(left: 10, right: 10),
                   child: Column(
