@@ -39,6 +39,7 @@ class _DashboardClientState extends State<DashboardClient> {
   @override
   void initState() {
     BlocProvider.of<DashboardBloc>(context).add(OnDashboardEvent());
+    BlocProvider.of<DashboardBloc>(context).add(OnNotificationEvent(tglAsses));
     // TODO: implement initState
     getPref();
     super.initState();
@@ -60,9 +61,9 @@ class _DashboardClientState extends State<DashboardClient> {
             child: BlocBuilder<DashboardBloc, DashboardState> (
               builder: (context, state) {
                 // dashboardBloc.scheduleNotification(state.tglAsses);
-                // if (state.tgl_asses != null) {
-                //   scheduleNotification(state.tgl_asses!);
-                // }
+                if (state.tgl_asses != null) {
+                  scheduleNotification(state.tgl_asses!);
+                }
                 return Container(
                   padding: const EdgeInsets.only(left: 10, right: 10),
                   child: Column(
