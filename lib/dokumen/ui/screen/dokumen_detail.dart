@@ -77,7 +77,7 @@ class _DokumenDetailState extends State<DokumenDetail> {
       builder: (context, state){
         return Scaffold(
           appBar: const CustomAppBar(
-            judul: 'Detail Dokumen',
+            judul: 'Dokumen',
           ),
           body: Container(
             padding: const EdgeInsets.only(left: 20, right: 20),
@@ -86,6 +86,8 @@ class _DokumenDetailState extends State<DokumenDetail> {
                 ? Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                const SizedBox(height: 20,),
+                const SizedBox(child: Text('Edit Dokumen', style: TextStyle(fontSize: 18, fontWeight:FontWeight.w400),),),
                 const SizedBox(height: 20,),
                 TextFormField(
                   controller: namaDokController,
@@ -157,6 +159,8 @@ class _DokumenDetailState extends State<DokumenDetail> {
                 : Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                const SizedBox(height: 20,),
+                const SizedBox(child: Text('Tambah Dokumen', style: TextStyle(fontSize: 18, fontWeight:FontWeight.w400),),),
                 const SizedBox(height: 20,),
                 TextFormField(
                   controller: namaDokController,

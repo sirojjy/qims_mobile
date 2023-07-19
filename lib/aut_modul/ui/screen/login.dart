@@ -39,6 +39,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget> [
+                      SizedBox(
+                        height: 100,
+                        width: 330,
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Image.asset(
+                              "assets/images/logo.png",
+                              width: size.width * 0.3
+                          ),
+                        ),
+                      ),
                       Container(
                         alignment: Alignment.centerLeft,
                         padding: const EdgeInsets.symmetric(horizontal:40),

@@ -39,7 +39,9 @@ class _DashboardClientState extends State<DashboardClient> {
   @override
   void initState() {
     BlocProvider.of<DashboardBloc>(context).add(OnDashboardEvent());
-    BlocProvider.of<DashboardBloc>(context).add(OnNotificationEvent(tglAsses));
+    BlocProvider.of<DashboardBloc>(context).add(OnNotificationEvent(BlocProvider.of<DashboardBloc>(context).state.tgl_asses));
+
+    // BlocProvider.of<DashboardBloc>(context).add(OnNotificationEvent(state.tgl_asses));
     // TODO: implement initState
     getPref();
     super.initState();
@@ -56,13 +58,14 @@ class _DashboardClientState extends State<DashboardClient> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar:  CustomAppBar(judul: 'Dashboard'),
+          appBar:  const CustomAppBar(judul: 'Dashboard'),
           body: SingleChildScrollView(
             child: BlocBuilder<DashboardBloc, DashboardState> (
               builder: (context, state) {
                 // dashboardBloc.scheduleNotification(state.tglAsses);
                 if (state.tgl_asses != null) {
-                  scheduleNotification(state.tgl_asses!);
+                  BlocProvider.of<DashboardBloc>(context).scheduleNotification(state.tgl_asses!);
+                  print('Tanggal Notifikasi ${state.tglAsses}');
                 }
                 return Container(
                   padding: const EdgeInsets.only(left: 10, right: 10),

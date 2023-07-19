@@ -89,29 +89,28 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
 
   /// Function to schedule notification
   FutureOr <void> scheduleNotification(String tglAsses) async {
+    tz.initializeTimeZones();
     print('Tanggal Assessment $tglAsses');
     //mengubah string tglAsses menjadi DateTime
     DateTime tglAssesDate = DateTime.parse(tglAsses);
-        //mendapatkan waktu sekarang
+    //mendapatkan waktu sekarang
     DateTime now = DateTime.now();
     //Pengecekan tglAsses udah lewat/belum
     if (tglAssesDate.isAfter(now)) {
       // Tgl Asses belum lewat, atur notifikasi berdasarkan tglAsses
       //mengatur zona waktu
       tz.initializeTimeZones();
-      String timeZoneName = tz.local.name;
-
+      tz.setLocalLocation(tz.getLocation('Asia/Jakarta'));
+      // String timeZoneName = tz.local.name;
       // Tambahkan logika untuk menentukan waktu notifikasi
-      // Misalnya, Anda ingin memberikan notifikasi pada pukul 9 pagi pada tanggal tglAsses
       tz.TZDateTime notificationTime = tz.TZDateTime(
-        tz.getLocation(timeZoneName),
+        tz.local,
         tglAssesDate.year,
         tglAssesDate.month,
         tglAssesDate.day,
-        9, //jam
-        0, //menit
-        0, //detik
+        6, 25, 0,
       );
+      print('Tanggal Notifikasi $tglAssesDate');
 
       //buat jadwal notifikasi
       var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
@@ -122,10 +121,8 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
         playSound: true,
       );
       ///ios
-      // var iOSPlatformChannelSpecifics = IOSNotificationDetails();
       var platformChannelSpecifics = NotificationDetails(
         android: androidPlatformChannelSpecifics,
-        // iOS: iOSPlatformChannelSpecifics,
       );
       await flutterLocalNotificationsPlugin.zonedSchedule(
           0,
